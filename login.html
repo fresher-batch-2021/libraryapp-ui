@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LibraryApp</title>
+    <link rel="stylesheet" href="styles.css">
+    <header id="header" class="header">
+
+    </header>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header.html");
+
+    </script>
+    <style>
+    .login-div{
+        display: flex;
+        justify-content: center;
+        border:2px solid;
+        width:30rem;
+        padding:30px;
+        color:white;
+        margin-left:450px;
+        margin-top:100px;
+        
+    }
+    .login-button{
+        margin-top: 50px;
+        border:1px;
+        width:140px;
+        padding: 10px;
+        border-radius: 20px;
+        background-color:black;
+        color:white; 
+        cursor: pointer;
+        margin-left:25px;
+
+    }
+    .login-input{
+        padding:10px;
+        margin:16px;
+        border:none;
+    }
+    h1{
+        margin-left: 50px;
+    }
+    </style>
+</head>
+<body class="login">
+       
+    <div class='login-div'>
+            <form onsubmit="login()">
+                    <h1>Login</h1>
+                <label>Email:</label><br>
+                <input class="login-input" type="email" name="email" id="email"  ><br>
+                <label>Password:</label><br>
+                <input  class="login-input" type="password" name="password" id="password" ><br>
+                <button class="login-button">Login</button>
+    </div>
+    
+</form>
+<script>
+    function login(){
+        event.preventDefault();
+        const email=document.querySelector("#email").value;
+        const password=document.querySelector("#password").value;
+        if(email==""||email==null){
+            alert("please enter the email")
+
+        }else if(password==""||password==null){
+            alert("enter the password")
+        }else{
+            window.location.href="initialpage.html";
+
+        }
+        let obj={
+            "email":email,
+            "password":password
+        }
+        console.log(obj);
+        
+    }
+</script>
+</body>
+</html>

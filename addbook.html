@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LibraryApp</title>
+    <link rel="stylesheet" href="styles.css" >
+    <style>
+    table{
+        width: 1300px;
+        margin-top:30px; 
+        border:0.5;
+    }
+    table, th, td {
+        border-collapse: collapse;
+        padding: 10px;
+        text-align: center;
+    }
+    .search{
+        margin-left: 500px;
+    }
+    tr:nth-child(even){background-color: #f2f2f2}
+    th {
+  background-color: rgb(4, 90, 170);
+  color: white;
+  text-align: center;
+}
+a{
+    border:10px;
+    color:black;
+}
+.searchinput{
+    padding: 10px;
+    border-radius:1px;
+}
+.orderbutton{
+    background-color:lightseagreen; 
+padding:10px;
+cursor:pointer;
+color:white;
+border-radius:5px;
+border:none;
+text-transform: capitalize
+}
+.add-input{
+    margin:10px;
+    width:190px;
+    height:4vh;
+}
+.add-button{
+    padding:15px;
+    width:90px;
+    cursor:pointer;
+}
+       
+    </style>
+</head>
+<body class="books">
+    <div >
+        <div class="search">
+                <input type="text" class="searchinput" name="search" id="search" placeholder="Search..."><br>
+        </div>
+            
+            <table >
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Books</th>
+                        <th>Authors</th>
+                        <th>Availability</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+        <tbody>
+                <tr>
+                        <td>1</td>
+                        <td>War and Peace</td>
+                        <td>Leo Tolstoy</td>
+                        <td>Available</td>
+                        <td><a href="editbook.html">Edit</a>&nbsp;
+                        <a href="delete.html"> Delete</a>
+                        </td>
+                    </tr>
+                    <tr>
+                            <td>2</td>
+                            <td>Song of Solomon</td>
+                            <td>Toni Morrison</td>
+                            <td>NotAvailable</td>
+                            <td><a href="editbook.html">Edit</a>&nbsp;
+                                <a href="delete.html"> Delete</a>
+                                </td>
+        
+                        </tr>
+                        <tr>
+                                <td>3</td>
+                                <td>Ulysses</td>
+                                <td>James Joyce</td>
+                                <td>Available</td>
+                                <td><a href="editbook.html">Edit</a>&nbsp;
+                                    <a href="delete.html"> Delete</a>
+                                    </td>
+        
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>The Shadow of the Wind</td>
+                                <td> Carlos Ruiz Zafon</td>
+                                <td>Available</td>
+                                <td><a href="editbook.html">Edit</a>&nbsp;
+                                    <a href="delete.html"> Delete</a>
+                                    </td>
+            
+                            </tr>
+        
+        
+        </tbody>            
+                    
+            </table>
+            <div class='orderbooks'>
+                <form onsubmit="addbook()">
+               <label for="Name">BookName:</label><br>
+               <input class="add-input" type="text" name="Name" id="Name"><br>
+               <label for="Author">AuthorName:</label><br>
+               <input class="add-input" type="text" name="Author" id="Author"><br>
+               <button class="add-button" >Add</button>
+               
+            </form>
+        
+            </div>
+    </div>
+    <script>
+    function addbook(){
+        event.preventDefault();
+        const bookname=document.querySelector("#Name").value;
+        const author=document.querySelector("#Author").value;
+        if(bookname==null||bookname==""){
+            alert("Enter the BookName");
+        }
+        else if(author==null||author==""){
+            alert("Enter the authorname");
+        }
+        else{
+            alert("Book Added Successfully");
+        }
+        const details={
+            "bookname":bookname,
+            "author":author
+        }
+        console.log(details);
+    }
+    </script>
+</body>
+</html>

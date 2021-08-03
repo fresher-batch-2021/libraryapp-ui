@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LibraryApp</title>
+    <link rel="stylesheet" href="styles.css">
+    <header id="header">
+
+        </header>
+        <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header.html");
+
+    </script>
+    <style>
+        .div{
+            margin-top:20px;
+            margin-left:400px;
+            border:1px solid;
+            background-color:  #cccccc;
+            margin-top:10px;
+            width: 30rem;
+            padding:15px;
+            border:none;
+        }
+   
+    .input{
+        width:190px;
+    }
+    .card{
+margin-left:10rem; 
+justify-content: center;
+    }
+    .register-a{
+        text-decoration: none;
+        color:black;
+    }
+    .already{
+        margin-top:10px;
+    }
+    </style>
+</head>
+<body class="register">
+        <div class="div">
+
+    <form  class="registerform" onsubmit="register()">
+        <div class="card">
+
+         <h1>Register</h1>
+
+         <label for="name">Name</label><br>
+         <input class="input" type="text" name="name" id="name" autofocus><br>
+         <label for="email">Email</label><br>
+         <input class="input"  type="email" name="email" id="email"><br>
+         <label for="PhoneNo">PhoneNo:</label><br>
+         <input class="input"  type="Number" name="PhoneNo" id="PhoneNo"><br>
+         
+         <label for="password">Password</label><br>
+         <input class="input"  type="password" name="password" id="password"><br>
+         <button class="button" type="submit"  >REGISTER</button>
+         <div class="already">
+         <a class="register-a" href="login.html">Already have an account</a> Signup
+           
+         </div>
+        </div>
+         
+     </form>
+    </div>
+    
+    <script>
+    function register(){
+        
+        event.preventDefault();
+        const name=document.querySelector("#name").value;
+        const email=document.querySelector("#email").value;
+        const phoneNo=document.querySelector("#PhoneNo").value;
+        const password=document.querySelector("#password").value;
+        if(name==""||name==null){
+            alert('name should be entered')
+        }else if(email==null||email==''){
+            alert('email should be added')
+        }else if(phoneNo==""||phoneNo==null){
+            alert("phone has to be filled")
+        }else if(password<6||password==null){
+            alert("password must be greater than 6 characcters")
+        }else{
+        window.location.href="login.html";
+            
+        }
+
+        let obj={
+            "name":name,
+            "email":email,
+            "phoneno":phoneNo,
+            "password":password
+        }
+        console.log(obj)
+
+    }
+    </script>
+</body>
+</html>
