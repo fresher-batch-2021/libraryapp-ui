@@ -5,97 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>LibraryApp</title>
     <style>
         .row {
+            float: left;
             display: flex;
-            flex-wrap: wrap;
-            width:100%;
-            margin-right: -15px;
-            margin-left: 15px;
+            flex-direction: row;
+            position: relative;
+            justify-content:space-between;
 
 
         }
-
-        .card {
-            border: 1px solid;
-            padding: 20px;
-            background: grey;
-            border: none;
-            margin: 10px
-        }
-/* 
-        .col-4 {
-            flex: 0 0 30.6666%;
-            justify-content: space-between;
-            max-width: 33.33%;            
-            border:1px solid;
-        } */
 
         img {
             width: 50%;
+        }
+
+        .card {
+            width: 100%;
+            flex-direction: column;
+            margin-top: 30px;
+            margin-left: 30px;
+            justify-content:space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background-color: #f1f1f1;
+            transition: 0.5s;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .card:hover {
+            transform: translateY(-20px)
         }
     </style>
 </head>
 
 <body>
     <div class="row">
-        <div class="col-4">
-                <h1> bookname </h1>
+        <div class="card">
+            <h1> War And Peace </h1>
 
-            <h5>authonname</h5>
-            <h6>description</h6>
-            <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt="">
-            <div>
-                <button>placeorder</button>
-
-            </div>
+            <h4>Leo Tolstoy</h4>
+            <a href="login.html">
+                <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt=""> </a>
         </div>
-        <div class="col-4">
+        <div class="card">
             <h1> bookname </h1>
-            <h5>authonname</h5>
-            <h6>description</h6>
-            <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt="">
-            <div>
-                <button>placeorder</button>
 
-            </div>
+            <h5>authonname</h5>
+            <p>description</p>
+            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
         </div>
-        <div class="col-4">
+        <div class="card">
             <h1> bookname </h1>
-            <h5>authonname</h5>
-            <h6>description</h6>
-            <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt="">
-            <div>
-                <button>placeorder</button>
 
-            </div>
-        </div>
-    </div>
-    <div class = "row">
-        <div class="col-4">
-            <h1> bookname </h1>
             <h5>authonname</h5>
-            <h6>description</h6>
-            <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt="">
-            <div>
-                <button>placeorder</button>
-
-            </div>
+            <p>description</p>
+            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
         </div>
-        <div class="col-4">
-            <h1> bookname </h1>
-            <h5>authonname</h5>
-            <h6>description</h6>
-            <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt="">
-            <div>
-                <button>placeorder</button>
-            </div>
+        
 
-        </div>
+
+
     </div>
 
-    
+
 </body>
 
 </html>

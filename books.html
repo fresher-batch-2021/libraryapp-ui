@@ -1,121 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
-    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="styles.css">
     <style>
-    table{
-        width: 1300px;
-        margin-top:30px; 
-        border:0.5;
-    }
-    table, th, td {
-        border-collapse: collapse;
-        padding: 10px;
-        text-align: center;
-    }
-    .search{
-        margin-left: 500px;
-    }
-    tr:nth-child(even){background-color: #f2f2f2}
-    th {
-  background-color: rgb(4, 90, 170);
-  color: white;
-  text-align: center;
-}
-a{
-    border:10px;
-    color:black;
-}
-.orderbutton{
-    background-color:lightseagreen; 
-padding:10px;
-cursor:pointer;
-color:white;
-border-radius:5px;
-border:none;
-text-transform: capitalize
-}
-.searchinput{
-    padding: 10px;
-    border-radius:1px;
-}
-       
+        table {
+            width: 1300px;
+            margin-top: 30px;
+            border: 0.5;
+        }
+
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .search {
+            margin-left: 500px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: rgb(4, 90, 170);
+            color: white;
+            text-align: center;
+        }
+
+        a {
+            border: 10px;
+            color: black;
+        }
+
+        .order-button {
+            background-color: lightseagreen;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            text-transform: capitalize
+        }
+
+        .search-input {
+            padding: 10px;
+            border-radius: 1px;
+        }
     </style>
 </head>
+
 <body class="books">
-    <div >
+    <div>
         <div class="search">
-                <input type="text" class="searchinput" name="search" id="search" placeholder="Search..."><br>
+            <input type="text" class="search-input" name="search" id="search" placeholder="Search...">
+            <br>
         </div>
-            
-            <table >
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Books</th>
-                        <th>Authors</th>
-                        <th>Availability</th>
-                        <th>Place Order</th>
 
-                    </tr>
-                </thead>
-        <tbody>
+        <table>
+            <thead>
                 <tr>
-                        <td>1</td>
-                        <td>War and Peace</td>
-                        <td>Leo Tolstoy</td>
-                        <td>Available</td>
-                        <td><a href="order.html">Order</a></td>
-                    </tr>
-                    <tr>
-                            <td>2</td>
-                            <td>Song of Solomon</td>
-                            <td>Toni Morrison</td>
-                            <td>NotAvailable</td>
-                            <td><a href="order.html">Order</a></td>
-        
-                        </tr>
-                        <tr>
-                                <td>3</td>
-                                <td>Ulysses</td>
-                                <td>James Joyce</td>
-                                <td>Available</td>
-                                <td><a href="order.html">Order</a></td>
-        
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>The Shadow of the Wind</td>
-                                <td> Carlos Ruiz Zafon</td>
-                                <td>Available</td>
-                                <td><a href="order.html">Order</a></td>
-            
-                            </tr>
-        
-        
-        </tbody>            
-                    
-            </table>
-            <div class='orderbooks'>
-                <a  href="ordered.html"> 
-                 <button class="orderbutton">ordered books</button>
+                    <th>S.No</th>
+                    <th>Books</th>
+                    <th>Authors</th>
+                    <th>Availability</th>
+                    <th>Price</th>
 
-                </a>
-                <a  href="buyedbooks.html"> 
-                    <button class="orderbutton">buyed books</button>
-   
-                   </a>
-                <a  href="addbook.html"> 
-                    <button class="orderbutton">Add books</button>
-   
-                   </a>
-        
-            </div>
+                </tr>
+            </thead>
+            <tbody id="book"> </tbody>
+
+        </table>
+        <div class='orderbooks'>
+            <a href="ordered.html">
+                <button class="order-button">ordered books</button>
+
+            </a>
+            <a href="buyedbooks.html">
+                <button class="order-button">buyed books</button>
+
+            </a>
+            <a href="addbook.html">
+                <button class="order-button">Add books</button>
+
+            </a>
+
+        </div>
     </div>
-    
+    <script>
+        function books() {
+
+            let book = [
+                { id: 1, bookName: "War and Peace", authorName: "Leo Tolstoy", availabile: "Available", price: 100 },
+                { id: 2, bookName: "Song of Solomon", authorName: "Toni Morrison", availabile: "Not Available", price: 300 },
+                { id: 3, bookName: "Ulysses", authorName: "James Joyce", availabile: "Available", price: 400 },
+                { id: 4, bookName: "The Shadow of the Wind", authorName: "Carlos Ruiz Zafon", availabile: "Not Available", price: 1000 }
+            ];
+            let allBook = "";
+            for (let bookObj of book) {
+                allBook = allBook + `<tr><td>${bookObj.id}</td><td>${bookObj.bookName}</td><td>${bookObj.authorName}</td><td>${bookObj.availabile}</td><td>1${bookObj.price}</td></tr>`;
+            }
+            console.log(allBook);
+            document.querySelector("#book").innerHTML = allBook;
+        }
+        books();
+    </script>
 </body>
+
 </html>

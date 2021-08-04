@@ -1,155 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
-    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="styles.css">
     <style>
-    table{
-        width: 1300px;
-        margin-top:30px; 
-        border:0.5;
-    }
-    table, th, td {
-        border-collapse: collapse;
-        padding: 10px;
-        text-align: center;
-    }
-    .search{
-        margin-left: 500px;
-    }
-    tr:nth-child(even){background-color: #f2f2f2}
-    th {
-  background-color: rgb(4, 90, 170);
-  color: white;
-  text-align: center;
-}
-a{
-    border:10px;
-    color:black;
-}
-.searchinput{
-    padding: 10px;
-    border-radius:1px;
-}
-.orderbutton{
-    background-color:lightseagreen; 
-padding:10px;
-cursor:pointer;
-color:white;
-border-radius:5px;
-border:none;
-text-transform: capitalize
-}
-.add-input{
-    margin:10px;
-    width:190px;
-    height:4vh;
-}
-.add-button{
-    padding:15px;
-    width:90px;
-    cursor:pointer;
-}
-       
+        table {
+            width: 1300px;
+            margin-top: 30px;
+            border: 0.5;
+        }
+
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .search {
+            margin-left: 500px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: rgb(4, 90, 170);
+            color: white;
+            text-align: center;
+        }
+
+        a {
+            border: 10px;
+            color: black;
+        }
+
+        .search-input {
+            padding: 10px;
+            border-radius: 1px;
+        }
+
+        .orderbutton {
+            background-color: lightseagreen;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            text-transform: capitalize
+        }
+
+        .add-input {
+            margin: 10px;
+            width: 190px;
+            height: 4vh;
+        }
+
+        .add-button {
+            padding: 15px;
+            width: 90px;
+            cursor: pointer;
+        }
     </style>
 </head>
-<body class="books">
-    <div >
-        <div class="search">
-                <input type="text" class="searchinput" name="search" id="search" placeholder="Search..."><br>
-        </div>
-            
-            <table >
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Books</th>
-                        <th>Authors</th>
-                        <th>Availability</th>
-                        <th>Actions</th>
 
-                    </tr>
-                </thead>
-        <tbody>
+<body class="books">
+    <div>
+        <div class="search">
+            <input type="text" class="search-input" name="search" id="search" placeholder="Search..."><br>
+        </div>
+
+        <table>
+            <thead>
                 <tr>
-                        <td>1</td>
-                        <td>War and Peace</td>
-                        <td>Leo Tolstoy</td>
-                        <td>Available</td>
-                        <td><a href="editbook.html">Edit</a>&nbsp;
-                        <a href="delete.html"> Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                            <td>2</td>
-                            <td>Song of Solomon</td>
-                            <td>Toni Morrison</td>
-                            <td>NotAvailable</td>
-                            <td><a href="editbook.html">Edit</a>&nbsp;
-                                <a href="delete.html"> Delete</a>
-                                </td>
-        
-                        </tr>
-                        <tr>
-                                <td>3</td>
-                                <td>Ulysses</td>
-                                <td>James Joyce</td>
-                                <td>Available</td>
-                                <td><a href="editbook.html">Edit</a>&nbsp;
-                                    <a href="delete.html"> Delete</a>
-                                    </td>
-        
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>The Shadow of the Wind</td>
-                                <td> Carlos Ruiz Zafon</td>
-                                <td>Available</td>
-                                <td><a href="editbook.html">Edit</a>&nbsp;
-                                    <a href="delete.html"> Delete</a>
-                                    </td>
-            
-                            </tr>
-        
-        
-        </tbody>            
-                    
-            </table>
-            <div class='orderbooks'>
-                <form onsubmit="addbook()">
-               <label for="Name">BookName:</label><br>
-               <input class="add-input" type="text" name="Name" id="Name"><br>
-               <label for="Author">AuthorName:</label><br>
-               <input class="add-input" type="text" name="Author" id="Author"><br>
-               <button class="add-button" >Add</button>
-               
+                    <th>S.No</th>
+                    <th>Books</th>
+                    <th>Authors</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+
+
+                </tr>
+            </thead>
+            <tbody id="addBook">
+
+            </tbody>
+
+        </table>
+        <div class='orderbooks'>
+            <form onsubmit="addbook()">
+                <label for="bookName">BookName:</label><br>
+                <input class="add-input" type="text" name="bookName" id="bookName"><br>
+                <label for="author">AuthorName:</label><br>
+                <input class="add-input" type="text" name="author" id="author"><br>
+                <div class="div2">
+
+                    <label for="quantity">Quantity:</label><br>
+                    <input class="add-input" type="text" name="quantity" id="quantity"><br>
+                    <label for="Price">Price:</label><br>
+                    <input class="add-input" type="text" name="Price" id="Price"><br>
+                    <label for="category">Category:</label><br>
+                    <input class="add-input" type="text" name="category" id="category"><br>
+
+                </div>
+
+                <button class="add-button">Add</button>
+
             </form>
-        
-            </div>
+
+        </div>
     </div>
     <script>
-    function addbook(){
-        event.preventDefault();
-        const bookname=document.querySelector("#Name").value;
-        const author=document.querySelector("#Author").value;
-        if(bookname==null||bookname==""){
-            alert("Enter the BookName");
+        function addbook() {
+            event.preventDefault();
+            const bookName = document.querySelector("#bookName").value;
+            const author = document.querySelector("#author").value;
+            const quantity = document.querySelector("#quantity").value;
+            const price = document.querySelector("#price").value;
+            const category = document.querySelector("#category").value;
+
+            if (bookName == null || bookName == "") {
+                alert("Enter the BookName");
+            }
+            else if (author == null || author == "") {
+                alert("Enter the authorname");
+            }
+            else if (quantity == null || quantity == "") {
+                alert("Enter the quantity");
+            }
+            else if (price == null || price == "") {
+                alert("Enter the price of the book");
+            }
+            else if (category == null || category == "") {
+                alert("Enter the category of the book");
+            }
+            else {
+                alert("Book Added Successfully");
+            }
+            const details = {
+                "bookName": bookname,
+                "author": author,
+                "quantity": quantity,
+                "price": price,
+                "category": category
+            }
+            console.log(details);
         }
-        else if(author==null||author==""){
-            alert("Enter the authorname");
+        function books() {
+            let book = [
+                { id: 1, bookName: "War and Peace", author: "Leo Tolstoy", price: "100", quantity: "10", category: "Animation" },
+                { id: 2, bookName: "Song of Solomon", author: "Toni Morrison", price: "200", quantity: "5", category: "Scientific" },
+                { id: 3, bookName: "Ulysses", author: "James Joyce	", price: "500", quantity: "6", category: "General" },
+                { id: 4, bookName: "The Shadow of the Wind", author: "Carlos Ruiz Zafon", price: "900", quantity: "11", category: "scientific" }
+            ]
+            let allBooks = "";
+            for (let bookObj of book) {
+                console.log(bookObj);
+                allBooks = allBooks + `<tr><td>${bookObj.id}</td><td>${bookObj.bookName}</td><td>${bookObj.author}</td><td>${bookObj.price}</td><td>${bookObj.quantity}</td><td>${bookObj.category}</td>`
+
+            }
+            console.log(allBooks)
+            document.querySelector("#addBook").innerHTML = allBooks;
         }
-        else{
-            alert("Book Added Successfully");
-        }
-        const details={
-            "bookname":bookname,
-            "author":author
-        }
-        console.log(details);
-    }
+        books();
     </script>
 </body>
+
 </html>
