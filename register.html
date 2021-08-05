@@ -28,21 +28,26 @@
         }
 
         .input {
-            width: 190px;
+            width: 300px;
+            border:none;
+            padding:15px;
         }
 
         .card {
-            margin-left: 10rem;
-            justify-content: center;
+            margin-left: 6rem;
         }
 
         .register-a {
             text-decoration: none;
             color: black;
+            margin:100px 0 0 70px;
         }
 
         .already {
-            margin-top: 10px;
+            margin-top: 20px;
+        }
+        h1{
+            margin-left:80px;
         }
     </style>
 </head>
@@ -55,15 +60,12 @@
 
                 <h1>Register</h1>
 
-                <label for="name">Name</label><br>
-                <input class="input" type="text" name="name" id="name" autofocus><br>
-                <label for="email">Email</label><br>
-                <input class="input" type="email" name="email" id="email"><br>
-                <label for="PhoneNo">PhoneNo:</label><br>
-                <input class="input" type="Number" name="PhoneNo" id="PhoneNo"><br>
+                <input class="input" type="text" name="name" id="name" placeholder="Name" autofocus><br>
+                <input class="input" type="email" name="email" id="email" placeholder="Email"><br>
+                <input class="input" type="text" name="PhoneNo" id="PhoneNo" placeholder="PhoneNo"><br>
 
-                <label for="password">Password</label><br>
-                <input class="input" type="password" name="password" id="password"><br>
+                <input class="input" type="password" name="password" id="password" placeholder="Password">
+                <br>
                 <button class="button" type="submit">REGISTER</button>
                 <div class="already">
                     <a class="register-a" href="login.html">Already have an account?</a>
@@ -83,13 +85,13 @@
             const phoneNo = document.querySelector("#PhoneNo").value;
             const password = document.querySelector("#password").value;
             if (name == "" || name == null) {
-                alert('name should be entered')
-            } else if (email == null || email == '') {
-                alert('email should be added')
-            } else if (phoneNo == "" || phoneNo == null) {
-                alert("phone has to be filled")
-            } else if (password < 6 || password == null) {
-                alert("password must be greater than 6 characcters")
+                alert('Name Should Be Entered')
+            } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+                alert('Invalid Email')
+            } else if (!/^\d{10}$/.test(phoneNo)) {
+                alert("Invalid Email")
+            } else if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(password)) {
+                alert("Password Must have uppercase and specialcharacter")
             } else {
                 window.location.href = "login.html";
 
@@ -104,6 +106,7 @@
             console.log(obj)
 
         }
+     
     </script>
 </body>
 
