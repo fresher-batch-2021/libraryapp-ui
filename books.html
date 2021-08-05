@@ -8,6 +8,12 @@
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        .books {
+            display: flex;
+            justify-content: center;
+            background-color: #c96567;
+        }
+
         table {
             width: 1300px;
             margin-top: 30px;
@@ -23,7 +29,7 @@
         }
 
         .search {
-            margin-left: 500px;
+            margin: 30px 0 5px 490px;
         }
 
         tr:nth-child(even) {
@@ -34,6 +40,8 @@
             background-color: rgb(4, 90, 170);
             color: white;
             text-align: center;
+            border: 1px solid;
+
         }
 
         a {
@@ -42,18 +50,29 @@
         }
 
         .order-button {
-            background-color: lightseagreen;
             padding: 10px;
             cursor: pointer;
-            color: white;
             border-radius: 5px;
             border: none;
-            text-transform: capitalize
+            text-transform: capitalize;
         }
 
+        .order-button:hover {
+            color: #f2f2f2;
+            background-color: blue;
+            ;
+        }
+
+
         .search-input {
-            padding: 10px;
+            width: 30%;
+            padding: 15px;
             border-radius: 1px;
+            border: none;
+        }
+        caption{
+            margin-bottom:20px;
+            font-size: 50px;
         }
     </style>
 </head>
@@ -66,13 +85,15 @@
         </div>
 
         <table>
+            <caption>BOOKS</caption>
+
             <thead>
                 <tr>
-                    <th>S.No</th>
-                    <th>Books</th>
-                    <th>Authors</th>
-                    <th>Availability</th>
-                    <th>Price</th>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Books</th>
+                    <th scope="col">Authors</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Price</th>
 
                 </tr>
             </thead>
@@ -85,7 +106,7 @@
 
             </a>
             <a href="buyedbooks.html">
-                <button class="order-button">buyed books</button>
+                <button class="order-button"> user books</button>
 
             </a>
             <a href="addbook.html">

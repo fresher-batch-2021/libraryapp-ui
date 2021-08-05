@@ -7,43 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <style>
-        .row {
-            float: left;
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            justify-content:space-between;
-
-
+        body{
+            background-color:#c96567; 
         }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr ;
+          }
 
         img {
             width: 50%;
         }
 
         .card {
-            width: 100%;
-            flex-direction: column;
-            margin-top: 30px;
-            margin-left: 30px;
-            justify-content:space-between;
-            align-items: center;
+            width: 90%;
+            margin:15px 0 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             text-align: center;
             background-color: #f1f1f1;
             transition: 0.5s;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
-            overflow: hidden
+            overflow: hidden;
+
         }
 
         .card:hover {
             transform: translateY(-20px)
         }
     </style>
+        <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
+    <header id="header">
+
+    </header>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header2.html");
+
+    </script>
+
     <div class="row">
         <div class="card">
             <h1> War And Peace </h1>
@@ -66,12 +73,19 @@
             <p>description</p>
             <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
         </div>
+        <div class="card">
+            <h1> bookname </h1>
+
+            <h5>authonname</h5>
+            <p>description</p>
+            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
+        </div>
         
 
 
 
     </div>
-
+   
 
 </body>
 

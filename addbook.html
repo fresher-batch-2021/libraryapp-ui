@@ -72,28 +72,9 @@
 
 <body class="books">
     <div>
-        <div class="search">
-            <input type="text" class="search-input" name="search" id="search" placeholder="Search..."><br>
-        </div>
+        
 
-        <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Books</th>
-                    <th>Authors</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Category</th>
-
-
-                </tr>
-            </thead>
-            <tbody id="addBook">
-
-            </tbody>
-
-        </table>
+       
         <div class='orderbooks'>
             <form onsubmit="addbook()">
                 <label for="bookName">BookName:</label><br>
@@ -145,7 +126,7 @@
                 alert("Book Added Successfully");
             }
             const details = {
-                "bookName": bookname,
+                "bookName": bookName,
                 "author": author,
                 "quantity": quantity,
                 "price": price,
@@ -153,23 +134,7 @@
             }
             console.log(details);
         }
-        function books() {
-            let book = [
-                { id: 1, bookName: "War and Peace", author: "Leo Tolstoy", price: "100", quantity: "10", category: "Animation" },
-                { id: 2, bookName: "Song of Solomon", author: "Toni Morrison", price: "200", quantity: "5", category: "Scientific" },
-                { id: 3, bookName: "Ulysses", author: "James Joyce	", price: "500", quantity: "6", category: "General" },
-                { id: 4, bookName: "The Shadow of the Wind", author: "Carlos Ruiz Zafon", price: "900", quantity: "11", category: "scientific" }
-            ]
-            let allBooks = "";
-            for (let bookObj of book) {
-                console.log(bookObj);
-                allBooks = allBooks + `<tr><td>${bookObj.id}</td><td>${bookObj.bookName}</td><td>${bookObj.author}</td><td>${bookObj.price}</td><td>${bookObj.quantity}</td><td>${bookObj.category}</td>`
-
-            }
-            console.log(allBooks)
-            document.querySelector("#addBook").innerHTML = allBooks;
-        }
-        books();
+       
     </script>
 </body>
 
