@@ -7,14 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
-    <header id="header" class="header">
 
-    </header>
-    <script src="js/jquery.min.js"></script>
-    <script>
-        $("#header").load("_header.html");
 
-    </script>
     <style>
         .login {
             justify-content: center;
@@ -56,6 +50,12 @@
             width: 80%;
         }
 
+        .login-input:focus {
+            outline: none !important;
+            border-color: #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
         h1 {
             margin-left: 50px;
         }
@@ -63,12 +63,23 @@
 </head>
 
 <body class="login">
+    <header id="header" class="header">
 
+    </header>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header.html");
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <div class='login-div'>
         <form onsubmit="login()">
             <h1>Login</h1>
-            <input class="login-input" type="email" name="email" id="email" placeholder="Email"><br>
-            <input class="login-input" type="password" name="password" id="password" placeholder="Password"><br>
+            <label for="email">Email</label>
+            <input class="login-input" type="email" name="email" id="email" placeholder="Enter Email" required><br>
+            <label for="password">Password</label>
+            <input class="login-input" type="password" name="password" id="password" placeholder="Enter Password"
+                required><br>
             <button class="login-button">Login</button>
     </div>
 
@@ -79,21 +90,29 @@
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
             if (email == "" || email == null) {
-                alert("please enter the email")
+                alert("Please Enter The Email")
+                return false;
 
             } else if (password == "" || password == null) {
-                alert("enter the password")
-            } else {
-                window.location.href = "initialpage.html";
-
+                alert("Enter The Password")
+                return false;
             }
-            let obj = {
+            let Obj = {
                 "email": email,
                 "password": password
             }
-            console.log(obj);
+            const url = "http://localhost:8000/users/login";
+            axios.post(url, Obj).then(res => {
+                console.log(res)
+                let token = res.data.token;
+                localStorage.setItem("LOGGED_IN_USER", token);
+                alert(res.data.message);
 
+            }).catch(err => {
+                alert(res.data.message);
+            })
         }
+
     </script>
 </body>
 

@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <style>
-        body{
-            background-color:#c96567; 
+        body {
+            background-color: #c96567;
         }
+
         .row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr ;
-          }
+            grid-template-columns: 1fr 1fr 1fr;
+        }
 
         img {
             width: 50%;
@@ -21,7 +22,7 @@
 
         .card {
             width: 90%;
-            margin:15px 0 15px;
+            margin: 15px 0 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             text-align: center;
             background-color: #f1f1f1;
@@ -32,11 +33,17 @@
 
         }
 
+        h1,
+        h4 {
+            text-transform: capitalize;
+        }
+
         .card:hover {
             transform: translateY(-20px)
         }
     </style>
-        <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
 
 </head>
 
@@ -51,41 +58,35 @@
 
     </script>
 
-    <div class="row">
-        <div class="card">
-            <h1> War And Peace </h1>
-
-            <h4>Leo Tolstoy</h4>
-            <a href="login.html">
-                <img src="https://images4.penguinrandomhouse.com/cover/9781400079988" alt=""> </a>
-        </div>
-        <div class="card">
-            <h1> bookname </h1>
-
-            <h5>authonname</h5>
-            <p>description</p>
-            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
-        </div>
-        <div class="card">
-            <h1> bookname </h1>
-
-            <h5>authonname</h5>
-            <p>description</p>
-            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
-        </div>
-        <div class="card">
-            <h1> bookname </h1>
-
-            <h5>authonname</h5>
-            <p>description</p>
-            <img src="https://www.oberlo.com/media/1603897585-image12-1.jpg?fm=webp&w=1824&fit=max" alt="">
-        </div>
-        
-
-
+    <div class="row" id="books">
 
     </div>
-   
+    <script>
+        function allBooks() {
+            const url = ('http://localhost:8000/book/get-all-books');
+            axios.post(url).then(res => {
+                console.log(res.data)
+                let book = res.data;
+                let allBooks = "";
+                for (let bookObj of book) {
+                    allBooks = allBooks + `
+                    <div class="card">
+            <h1> ${bookObj.bookName} </h1>
+
+            <h4>${bookObj.authorName}</h4>
+            <img src="./images/${bookObj.image}" alt="image not found"/>
+        </div> `
+                }
+
+                document.querySelector('#books').innerHTML = allBooks;
+
+                console.log("renis");
+            })
+
+        }
+        allBooks()
+
+    </script>
 
 </body>
 

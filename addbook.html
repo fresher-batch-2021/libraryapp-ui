@@ -40,6 +40,8 @@
             cursor: pointer;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+
 </head>
 
 <body class="books">
@@ -58,16 +60,19 @@
                     <label for="quantity">Quantity:</label><br>
                     <input class="add-input" type="text" name="quantity" id="quantity"><br>
                     <label for="Price">Price:</label><br>
-                    <input class="add-input" type="text" name="Price" id="Price"><br>
+                    <input class="add-input" type="text" name="Price" id="price"><br>
                     <label for="category">Category:</label><br>
                     <input class="add-input" type="text" name="category" id="category"><br>
+                    <input type="text" id="file">
 
                 </div>
 
                 <button class="add-button">Add</button>
 
             </form>
+            <div id="loadimage">
 
+            </div>
         </div>
     </div>
     <script>
@@ -78,6 +83,8 @@
             const quantity = document.querySelector("#quantity").value;
             const price = document.querySelector("#price").value;
             const category = document.querySelector("#category").value;
+            const image = document.querySelector('#file').value;
+            console.log(image);
 
             if (bookName == null || bookName == "") {
                 alert("Enter the BookName");
@@ -99,12 +106,19 @@
             }
             const details = {
                 "bookName": bookName,
-                "author": author,
+                "authorName": author,
                 "quantity": quantity,
                 "price": price,
-                "category": category
+                "category": category,
+                "image": image
             }
             console.log(details);
+
+            const url = ('http://localhost:8000/book/add-book');
+            axios.post(url, details).then(res =>
+                console.log(res.data))
+                .catch(err => alert(res.data))
+
         }
 
     </script>

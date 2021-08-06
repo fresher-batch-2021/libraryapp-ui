@@ -11,6 +11,7 @@
         .books {
             background-color: #c96567;
             display: flex;
+            justify-content: center;
         }
 
         table {
@@ -21,6 +22,7 @@
             text-align: center;
             padding: 10px;
         }
+
         td {
             border-collapse: collapse;
             padding: 10px;
@@ -61,7 +63,7 @@
         .order-button:hover {
             color: #f2f2f2;
             background-color: blue;
-        
+
         }
 
 
@@ -77,6 +79,8 @@
             font-size: 50px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+
 </head>
 
 <body class="books">
@@ -94,8 +98,10 @@
                     <th scope="col">S.No</th>
                     <th scope="col">Books</th>
                     <th scope="col">Authors</th>
-                    <th scope="col">Availability</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+
 
                 </tr>
             </thead>
@@ -121,18 +127,18 @@
     <script>
         function books() {
 
-            let book = [
-                { id: 1, bookName: "War and Peace", authorName: "Leo Tolstoy", availabile: "Available", price: 100 },
-                { id: 2, bookName: "Song of Solomon", authorName: "Toni Morrison", availabile: "Not Available", price: 300 },
-                { id: 3, bookName: "Ulysses", authorName: "James Joyce", availabile: "Available", price: 400 },
-                { id: 4, bookName: "The Shadow of the Wind", authorName: "Carlos Ruiz Zafon", availabile: "Not Available", price: 1000 }
-            ];
-            let allBook = "";
-            for (let bookObj of book) {
-                allBook = allBook + `<tr><td>${bookObj.id}</td><td>${bookObj.bookName}</td><td>${bookObj.authorName}</td><td>${bookObj.availabile}</td><td>1${bookObj.price}</td></tr>`;
-            }
-            console.log(allBook);
-            document.querySelector("#book").innerHTML = allBook;
+            const url = ('http://localhost:8000/book/get-all-books');
+            axios.post(url).then(res => {
+                console.log(res.data)
+                let book = res.data
+                let allBook = "";
+                let i = 1;
+                for (let bookObj of book) {
+                    allBook = allBook + `<tr><td>${i++}</td><td>${bookObj.bookName}</td><td>${bookObj.authorName}</td><td>${bookObj.category}</td><td>Rs.${bookObj.price}</td><td>${bookObj.quantity}</td></tr>`;
+                }
+                console.log(allBook);
+                document.querySelector("#book").innerHTML = allBook;
+            })
         }
         books();
     </script>

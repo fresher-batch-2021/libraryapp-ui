@@ -7,14 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
-    <header id="header">
+    
 
-    </header>
-    <script src="js/jquery.min.js"></script>
-    <script>
-        $("#header").load("_header.html");
-
-    </script>
     <style>
         .div {
             margin-top: 20px;
@@ -27,8 +21,13 @@
 
         .input {
             width: 300px;
-            border:none;
-            padding:15px;
+            border: none;
+            padding: 15px;
+        }
+        .input:focus {
+            outline: none !important;
+            border-color: #719ECE;
+            box-shadow: 0 0 10px #719ECE;
         }
 
         .card {
@@ -38,32 +37,40 @@
         .register-a {
             text-decoration: none;
             color: black;
-            margin:100px 0 0 70px;
+            margin: 100px 0 0 70px;
         }
 
         .already {
             margin-top: 20px;
         }
-        h1{
-            margin-left:80px;
+
+        h1 {
+            margin-left: 80px;
         }
     </style>
 </head>
 
 <body class="register">
+    <header id="header">
+
+    </header>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header.html");
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+
     <div class="div">
 
-        <form class="registerform" onsubmit=register()>
+        <form class="registerform" onsubmit="register()">
             <div class="card">
 
                 <h1>Register</h1>
-
                 <input class="input" type="text" name="name" id="name" placeholder="Name" autofocus><br>
-                <input class="input" type="email" name="email" id="email" placeholder="Email"><br>
+                <input class="input" type="email" name="email" id="email" placeholder="Email" required><br>
                 <input class="input" type="text" name="PhoneNo" id="PhoneNo" placeholder="PhoneNo"><br>
-
-                <input class="input" type="password" name="password" id="password" placeholder="Password">
-                <br>
+                <input class="input" type="password" name="password" id="password" placeholder="Password" required><br>
                 <button class="button" type="submit">REGISTER</button>
                 <div class="already">
                     <a class="register-a" href="login.html">Already have an account?</a>
@@ -84,27 +91,39 @@
             const password = document.querySelector("#password").value;
             if (name == "" || name == null) {
                 alert('Name Should Be Entered')
+                return false;
             } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
                 alert('Invalid Email')
+                return false;
             } else if (!/^\d{10}$/.test(phoneNo)) {
-                alert("Invalid Email")
+                alert("Invalid phoneno")
+                return false;
             } else if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(password)) {
                 alert("Password Must have uppercase and specialcharacter")
-            } else {
-                window.location.href = "login.html";
-
+                return false;
+            }else{
+                window.location.href="login.html"
             }
 
-            let obj = {
+            let Obj = {
                 "name": name,
                 "email": email,
-                "phoneNo": phoneNo,
+                "phone": phoneNo,
                 "password": password
             }
-            console.log(obj)
+            console.log(Obj)
+            const url = "http://localhost:8000/users/addUser";
+            axios.post(url, Obj).then(res => {
+                alert("Successfully registered");
+            }).catch(err => {
+                alert("Unable to register");
+            })
 
         }
-     
+
+
+
+
     </script>
 </body>
 
