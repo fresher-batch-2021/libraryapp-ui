@@ -3,10 +3,10 @@ function allBooks() {
     axios.post(url).then(res => {
         console.log(res.data)
         let book = res.data;
-        let allBooks = "";
+        let allBook = "";
         for (let bookObj of book) {
             console.log(bookObj.bookName);
-            allBooks = allBooks + `
+            allBook = allBook + `
             <div class="card">
 
     <h1 class="initial-page-h1">${bookObj.bookName} </h1>
@@ -18,7 +18,7 @@ function allBooks() {
 `
         }
 
-        document.querySelector('#books').innerHTML = allBooks;
+        document.querySelector('#books').innerHTML = allBook;
 
     })
 

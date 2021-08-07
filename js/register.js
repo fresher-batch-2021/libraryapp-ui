@@ -1,4 +1,4 @@
-function register() {
+function register(event) {
 
     event.preventDefault();
     const name = document.querySelector("#name").value;

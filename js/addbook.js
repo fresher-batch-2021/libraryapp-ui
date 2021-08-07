@@ -1,4 +1,4 @@
-function addbook() {
+function addbook(event) {
     event.preventDefault();
     const bookName = document.querySelector("#bookName").value;
     const author = document.querySelector("#author").value;
