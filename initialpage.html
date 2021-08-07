@@ -6,44 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
-    <style>
-        body {
-            background-color: #c96567;
-        }
-
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        img {
-            width: 50%;
-        }
-
-        .card {
-            width: 90%;
-            margin: 15px 0 15px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            text-align: center;
-            background-color: #f1f1f1;
-            transition: 0.5s;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-
-        }
-
-        h1,
-        h4 {
-            text-transform: capitalize;
-        }
-
-        .card:hover {
-            transform: translateY(-20px)
-        }
-    </style>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class='login-div'>
 
 </head>
 
@@ -61,32 +28,7 @@
     <div class="row" id="books">
 
     </div>
-    <script>
-        function allBooks() {
-            const url = ('http://localhost:8000/book/get-all-books');
-            axios.post(url).then(res => {
-                console.log(res.data)
-                let book = res.data;
-                let allBooks = "";
-                for (let bookObj of book) {
-                    allBooks = allBooks + `
-                    <div class="card">
-            <h1> ${bookObj.bookName} </h1>
-
-            <h4>${bookObj.authorName}</h4>
-            <img src="./images/${bookObj.image}" alt="image not found"/>
-        </div> `
-                }
-
-                document.querySelector('#books').innerHTML = allBooks;
-
-                console.log("renis");
-            })
-
-        }
-        allBooks()
-
-    </script>
+    <script src="js/initialpage.js"></script>
 
 </body>
 

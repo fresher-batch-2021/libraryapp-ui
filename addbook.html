@@ -40,13 +40,16 @@
             cursor: pointer;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class='login-div'>
 
 </head>
 
 <body class="books">
     <div>
-<h1> Add Books</h1>
+        <h1> Add Books</h1>
         <div class='orderbooks'>
             <form onsubmit="addbook()">
                 <label for="bookName">BookName:</label><br>
@@ -73,51 +76,8 @@
             </div>
         </div>
     </div>
-    <script>
-        function addbook() {
-            event.preventDefault();
-            const bookName = document.querySelector("#bookName").value;
-            const author = document.querySelector("#author").value;
-            const quantity = document.querySelector("#quantity").value;
-            const price = document.querySelector("#price").value;
-            const category = document.querySelector("#category").value;
-            const image = document.querySelector('#file').value;
-            console.log(image);
-
-            if (bookName == null || bookName == "") {
-                alert("Enter the BookName");
-            }
-            else if (author == null || author == "") {
-                alert("Enter the authorname");
-            }
-            else if (quantity == null || quantity == "") {
-                alert("Enter the quantity");
-            }
-            else if (price == null || price == "") {
-                alert("Enter the price of the book");
-            }
-            else if (category == null || category == "") {
-                alert("Enter the category of the book");
-            }
-            else {
-                alert("Book Added Successfully");
-            }
-            const details = {
-                "bookName": bookName,
-                "authorName": author,
-                "quantity": quantity,
-                "price": price,
-                "category": category,
-                "image": image
-            }
-            console.log(details);
-
-            const url = ('http://localhost:8000/book/add-book');
-            axios.post(url, details).then(res =>
-                console.log(res.data))
-                .catch(err => alert(res.data))
-
-        }
+    <script src="js/addbook.js">
+        
 
     </script>
 </body>

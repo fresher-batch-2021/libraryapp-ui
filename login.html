@@ -9,60 +9,9 @@
     <link rel="stylesheet" href="styles.css">
 
 
-    <style>
-        .login {
-            justify-content: center;
-            margin: 0%;
-            background-color: #c96567;
-        }
-
-        .login-div {
-            display: flex;
-            justify-content: center;
-            width: 30rem;
-            padding: 30px;
-            color: #c96567;
-            margin-left: 400px;
-            margin-top: 100px;
-            background-color: #cccccc;
-            border: none;
-            border-radius: 10px;
-
-        }
-
-        .login-button {
-            color: rgb(0, 0, 0);
-            padding: 16px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 14px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            margin-left: 10px;
-            border: none;
-            width: 90%
-        }
-
-        .login-input {
-            padding: 10px;
-            margin: 16px;
-            border: none;
-            width: 80%;
-        }
-
-        .login-input:focus {
-            outline: none !important;
-            border-color: #719ECE;
-            box-shadow: 0 0 10px #719ECE;
-        }
-
-        h1 {
-            margin-left: 50px;
-        }
-    </style>
 </head>
 
-<body class="login">
+<body>
     <header id="header" class="header">
 
     </header>
@@ -71,47 +20,26 @@
         $("#header").load("_header.html");
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
-    <div class='login-div'>
-        <form onsubmit="login()">
-            <h1>Login</h1>
-            <label for="email">Email</label>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <div class="login-container">
+
+        <form onsubmit="login()" class="login-form">
+            <h1 class="login-h1">Login</h1>
+            <label for="email" class="login-label" >Email</label>
             <input class="login-input" type="email" name="email" id="email" placeholder="Enter Email" required><br>
-            <label for="password">Password</label>
+            <label for="password"class="login-label" >Password</label>
             <input class="login-input" type="password" name="password" id="password" placeholder="Enter Password"
                 required><br>
             <button class="login-button">Login</button>
-    </div>
+</div>
+
+
 
     </form>
-    <script>
-        function login() {
-            event.preventDefault();
-            const email = document.querySelector("#email").value;
-            const password = document.querySelector("#password").value;
-            if (email == "" || email == null) {
-                alert("Please Enter The Email")
-                return false;
-
-            } else if (password == "" || password == null) {
-                alert("Enter The Password")
-                return false;
-            }
-            let Obj = {
-                "email": email,
-                "password": password
-            }
-            const url = "http://localhost:8000/users/login";
-            axios.post(url, Obj).then(res => {
-                console.log(res)
-                let token = res.data.token;
-                localStorage.setItem("LOGGED_IN_USER", token);
-                alert(res.data.message);
-
-            }).catch(err => {
-                alert(res.data.message);
-            })
-        }
+    <script src="js/login.js">
+       
 
     </script>
 </body>

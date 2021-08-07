@@ -7,79 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .books {
-            background-color: #c96567;
-            display: flex;
-            justify-content: center;
-        }
-
-        table {
-            width: 1300px;
-            margin-top: 30px;
-            border: 0.5;
-            border-collapse: collapse;
-            text-align: center;
-            padding: 10px;
-        }
-
-        td {
-            border-collapse: collapse;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .search {
-            margin: 30px 0 5px 490px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2
-        }
-
-        th {
-            background-color: rgb(4, 90, 170);
-            color: white;
-            border: 1px solid;
-            border-collapse: collapse;
-            padding: 10px;
-            text-align: center;
-
-        }
-
-        a {
-            border: 10px;
-            color: black;
-        }
-
-        .order-button {
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            border: none;
-            text-transform: capitalize;
-        }
-
-        .order-button:hover {
-            color: #f2f2f2;
-            background-color: blue;
-
-        }
-
-
-        .search-input {
-            width: 30%;
-            padding: 15px;
-            border-radius: 1px;
-            border: none;
-        }
-
-        caption {
-            margin-bottom: 20px;
-            font-size: 50px;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class='login-div'>
 
 </head>
 
@@ -124,24 +55,8 @@
 
         </div>
     </div>
-    <script>
-        function books() {
-
-            const url = ('http://localhost:8000/book/get-all-books');
-            axios.post(url).then(res => {
-                console.log(res.data)
-                let book = res.data
-                let allBook = "";
-                let i = 1;
-                for (let bookObj of book) {
-                    allBook = allBook + `<tr><td>${i++}</td><td>${bookObj.bookName}</td><td>${bookObj.authorName}</td><td>${bookObj.category}</td><td>Rs.${bookObj.price}</td><td>${bookObj.quantity}</td></tr>`;
-                }
-                console.log(allBook);
-                document.querySelector("#book").innerHTML = allBook;
-            })
-        }
-        books();
-    </script>
+    <script src="js/books.js">
+        </script>
 </body>
 
 </html>

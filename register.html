@@ -7,50 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
-    
 
-    <style>
-        .div {
-            margin-top: 20px;
-            margin-left: 400px;
-            background-color: #cccccc;
-            width: 30rem;
-            padding: 15px;
-            border: none;
-        }
 
-        .input {
-            width: 300px;
-            border: none;
-            padding: 15px;
-        }
-        .input:focus {
-            outline: none !important;
-            border-color: #719ECE;
-            box-shadow: 0 0 10px #719ECE;
-        }
 
-        .card {
-            margin-left: 6rem;
-        }
-
-        .register-a {
-            text-decoration: none;
-            color: black;
-            margin: 100px 0 0 70px;
-        }
-
-        .already {
-            margin-top: 20px;
-        }
-
-        h1 {
-            margin-left: 80px;
-        }
-    </style>
 </head>
 
-<body class="register">
+<body>
     <header id="header">
 
     </header>
@@ -59,67 +21,32 @@
         $("#header").load("_header.html");
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="register-container">
+        <h1 class="register-h1">Register</h1>
 
-    <div class="div">
+        <form class="register-form" onsubmit="register()">
 
-        <form class="registerform" onsubmit="register()">
-            <div class="card">
+            <label for="name">Name:</label>
+            <input class="register-input" type="text" name="name" id="name" placeholder="Name" autofocus>
+            <label for="email">Email</label>
 
-                <h1>Register</h1>
-                <input class="input" type="text" name="name" id="name" placeholder="Name" autofocus><br>
-                <input class="input" type="email" name="email" id="email" placeholder="Email" required><br>
-                <input class="input" type="text" name="PhoneNo" id="PhoneNo" placeholder="PhoneNo"><br>
-                <input class="input" type="password" name="password" id="password" placeholder="Password" required><br>
-                <button class="button" type="submit">REGISTER</button>
-                <div class="already">
-                    <a class="register-a" href="login.html">Already have an account?</a>
+            <input class="register-input" type="email" name="email" id="email" placeholder="Email" required>
+            <label for="password">Password</label>
 
-                </div>
-            </div>
+            <input class="register-input" type="password" name="password" id="password" placeholder="Password"
+                required><br>
+            <button class="register-button" type="submit">REGISTER</button>
+                <a class="register-a" href="login.html">Already have an account?</a>
+
 
         </form>
     </div>
 
-    <script>
-        function register() {
+    <script src="js/register.js">
 
-            event.preventDefault();
-            const name = document.querySelector("#name").value;
-            const email = document.querySelector("#email").value;
-            const phoneNo = document.querySelector("#PhoneNo").value;
-            const password = document.querySelector("#password").value;
-            if (name == "" || name == null) {
-                alert('Name Should Be Entered')
-                return false;
-            } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
-                alert('Invalid Email')
-                return false;
-            } else if (!/^\d{10}$/.test(phoneNo)) {
-                alert("Invalid phoneno")
-                return false;
-            } else if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(password)) {
-                alert("Password Must have uppercase and specialcharacter")
-                return false;
-            }else{
-                window.location.href="login.html"
-            }
-
-            let Obj = {
-                "name": name,
-                "email": email,
-                "phone": phoneNo,
-                "password": password
-            }
-            console.log(Obj)
-            const url = "http://localhost:8000/users/addUser";
-            axios.post(url, Obj).then(res => {
-                alert("Successfully registered");
-            }).catch(err => {
-                alert("Unable to register");
-            })
-
-        }
     </script>
 </body>
 

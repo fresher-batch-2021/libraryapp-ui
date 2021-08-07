@@ -1,9 +1,7 @@
 
-.index{
-    margin:0;
-    background-color:#c96567; 
+body{
+    background-color: cornflowerblue;
 }
-
 .navbar{
     margin:0;    
     font-size:20px;
@@ -15,6 +13,7 @@
     margin-left:10px;
     padding: 8px;
     border:3px;
+    text-decoration: none;
 
 }
 .logo:hover{
@@ -38,65 +37,204 @@
     .nav-items{
         padding:8px;
         margin-left:50px;
+        text-decoration: none;
+
     }
     .nav-items:hover{
         color:black;
         background-color:#f1f1f1;
         transition:0.5s;
     }
-   a{
-    text-decoration:none;
-    color:#f1f1f1;
-     }
-     
-.register{
-    border:1px;
-    color:#c96567;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color:#c96567; 
-}
 
+    /* registerpage */
+    .register-card{
+        background-color:#f1f1f1;
 
-.register-div{
-    border-radius: 5px;
-    padding: 10px;
-    border:10px;
-    background-color: #97AABD;
-  }
-.anchor{
-    text-decoration: none;
-}
-.input{
-    margin:14px;
-    border:none;
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.button {
-  color: rgb(0, 0, 0);
-  padding: 16px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  transition-duration: 0.4s;
+    }
+    .register-container{
+        margin:10px 0 0 430px;
+        max-width: 300px;
+        padding:60px;
+        border-radius: 6px;
+        background-color: #cccccc;
+    }
+    .register-h1{
+        display: flex;
+        justify-content: center;
+    }
+    .register-input{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+    }
+    .register-input:focus{
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;  
+    }
+    label{
+        display: block;
+    }
+    .register-button{
+        background-color: #0e0cad;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin:20px 2px 0 50px;
   cursor: pointer;
-  margin-left:80px;
-  border:none;
-  width: 40%
+  width:70%;
+border-radius:28px;
+    }
+    .register-a{
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        margin-top:15px;
+    }
 
-  }
-  
-  .button:hover {
-    background-color: rgb(46, 32, 110);
-    color:rgb(255, 255, 255);
-  }
+    /* loginpage */
+.login-container{
+    margin:70px 0 0 480px;
+    max-width: 300px;
+    display:inline-block;
+    justify-content: center;
+    align-items: center;
+    padding:70px;
+    border-radius: 6px;
+    background-color: #cccccc;
+}
+.login-h1{
+    display: flex;
+    justify-content: center;
+}
+.login-input{
+     width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+}
+.login-input:focus{
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;  
+}
+.login-button{
+    background-color: #0e0cad;
+border: none;
+color: white;
+padding: 16px 32px;
+margin:20px 2px 0 5px;
+cursor: pointer;
+width:100%;
+border-radius:28px;
+}
 
+/* bookspage */
+.books {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 1300px;
+    margin-top: 30px;
+    border: 0.5;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+
+td {
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}
+
+.search {
+    margin: 30px 0 5px 490px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: rgb(4, 90, 170);
+    color: white;
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+
+}
+
+a {
+    border: 10px;
+    color: black;
+}
+
+.order-button {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    text-transform: capitalize;
+}
+
+.order-button:hover {
+    color: #f2f2f2;
+    background-color: blue;
+
+}
+
+
+.search-input {
+    width: 30%;
+    padding: 15px;
+    border-radius: 40px;
+    border: none;
+}
+
+caption {
+    margin-bottom: 20px;
+    font-size: 50px;
+}
 .orderbooks{
     border:10px;
     margin-top:100px; 
+}
+
+/* initialpage */
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.initial-page-img {
+    width: 50%;
+}
+
+.card {
+    width: 90%;
+    margin: 15px 0 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: #f1f1f1;
+    transition: 0.5s;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+}
+
+.initial-page-h1,h4 {
+    text-transform: capitalize;
+}
+
+.card:hover {
+    transform: translateY(-20px)
 }
