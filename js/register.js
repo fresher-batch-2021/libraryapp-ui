@@ -20,7 +20,6 @@ function register(event) {
     let Obj = {
         "name": name,
         "email": email,
-        "phone": phoneNo,
         "password": password
     }
     console.log(Obj)
