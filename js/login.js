@@ -1,4 +1,4 @@
-function login(event) {
+function login() {
     event.preventDefault();
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
@@ -9,19 +9,22 @@ function login(event) {
     } else if (password == "" || password == null) {
         alert("Enter The Password")
         return false;
-    }
-    let Obj = {
+    }else{
+    const Obj = {
         "email": email,
         "password": password
     }
     const url = "http://localhost:8000/users/login";
     axios.post(url, Obj).then(res => {
-        console.log(res)
-        let token = res.data.token;
-        localStorage.setItem("LOGGED_IN_USER", token);
-        alert(res.data.message);
-
-    }).catch(err => {
+        console.log(res.data)
+        let user=res.data.userData
+        localStorage.setItem('user',JSON.stringify(user));
+        if(res.data.message==="login successfull"){
+            window.location.href="initialpage.html"
+        }
+        alert(res.data.message)})
+        .catch(err => {
         alert(res.data.message);
     })
+}
 }

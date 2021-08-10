@@ -8,24 +8,32 @@ function addbook(event) {
     const image = document.querySelector('#file').value;
     console.log(image);
 
-    if (bookName == null || bookName == "") {
+    if (bookName == "" || bookName == "") {
         alert("Enter the BookName");
+        return false
     }
     else if (author == null || author == "") {
         alert("Enter the authorname");
+        return false
+
     }
     else if (quantity == null || quantity == "") {
         alert("Enter the quantity");
+        return false
+
     }
     else if (price == null || price == "") {
         alert("Enter the price of the book");
+        return false
+
     }
     else if (category == null || category == "") {
         alert("Enter the category of the book");
+        return false
+
     }
     else {
-        alert("Book Added Successfully");
-    }
+    
     const details = {
         "bookName": bookName,
         "authorName": author,
@@ -38,7 +46,8 @@ function addbook(event) {
 
     const url = ('http://localhost:8000/book/add-book');
     axios.post(url, details).then(res =>
-        console.log(res.data))
-        .catch(err => alert(res.data))
+        alert(res.data))
+        .catch(err => alert("invalid details"))
+    }
 
 }

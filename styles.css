@@ -14,6 +14,7 @@ body{
     padding: 8px;
     border:3px;
     text-decoration: none;
+    color:black;
 
 }
 .logo:hover{
@@ -23,6 +24,7 @@ body{
 
 }
 .nav-item{
+    color:black;
     border:3px;
     margin-left:57rem;
     text-decoration: none;
@@ -30,12 +32,14 @@ body{
 
     } 
     .nav-item:hover{
+        color:black;
         background-color:#f1f1f1;
         border-radius: 0;
         color:black;
     }
     .nav-items{
         padding:8px;
+        color:black;
         margin-left:50px;
         text-decoration: none;
 
@@ -171,11 +175,7 @@ th {
 
 }
 
-a {
-    border: 10px;
-    color: black;
-    margin:50px;
-}
+
 
 .order-button {
     padding: 10px;
@@ -269,3 +269,45 @@ caption {
     margin-top:40px;
 }
 
+/* addbook */
+.book-container{
+    margin-left: 200px;
+    display: flex;
+    justify-content: center;
+   background-color: #cccccc;  
+   border:1px solid;
+   padding: 20px;
+   width:60%
+}
+.add-book-h1{
+    display: flex;
+    justify-content: center;
+}
+.add-book{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+.add-book-label{
+    margin:20px;
+}
+.add-book-input {
+    padding: 10px;
+    margin:10px;
+    border:none;
+}
+.add-book-input:focus{
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;  
+}
+
+.add-book-button {
+    margin:40px 0 0 100px;
+    padding: 15px;
+    width: 90px;
+    cursor: pointer;
+    color:white;
+    background-color: blue;
+    width:50%;
+    border-radius:28px;
+}

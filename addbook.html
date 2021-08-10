@@ -7,75 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LibraryApp</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        a {
-            border: 10px;
-            color: black;
-        }
-
-        .search-input {
-            padding: 10px;
-            border-radius: 1px;
-        }
-
-        .orderbutton {
-            background-color: lightseagreen;
-            padding: 10px;
-            cursor: pointer;
-            color: white;
-            border-radius: 5px;
-            border: none;
-            text-transform: capitalize
-        }
-
-        .add-input {
-            margin: 10px;
-            width: 190px;
-            height: 4vh;
-        }
-
-        .add-button {
-            padding: 15px;
-            width: 90px;
-            cursor: pointer;
-        }
-    </style>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <div class='login-div'>
-
+        <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="books">
-    <div>
-        <h1> Add Books</h1>
-        <div class='orderbooks'>
+<body>
+    <h1 class="add-book-h1">Add Books</h1>
+        <div class='book-container'>
             <form onsubmit="addbook()">
-                <label for="bookName">BookName:</label><br>
-                <input class="add-input" type="text" name="bookName" id="bookName"><br>
-                <label for="author">AuthorName:</label><br>
-                <input class="add-input" type="text" name="author" id="author"><br>
-                <div class="div2">
+                <div class="add-book" >
 
-                    <label for="quantity">Quantity:</label><br>
-                    <input class="add-input" type="text" name="quantity" id="quantity"><br>
-                    <label for="Price">Price:</label><br>
-                    <input class="add-input" type="text" name="Price" id="price"><br>
-                    <label for="category">Category:</label><br>
-                    <input class="add-input" type="text" name="category" id="category"><br>
-                    <input type="text" id="file">
+                <label class="add-book-label" for="bookName">BookName:</label>
+                <input class="add-book-input" type="text" name="bookName" id="bookName">
+                <label class="add-book-label" for="author">AuthorName:</label>
+                <input class="add-book-input" type="text" name="author" id="author">
+
+                    <label class="add-book-label" for="quantity">Quantity:</label>
+                    <input class="add-book-input" type="text" name="quantity" id="quantity">
+                    <label  class="add-book-label"for="Price">Price:</label>
+                    <input class="add-book-input" type="text" name="Price" id="price">
+                    <label class="add-book-label" for="category">Category:</label>
+                    <input class="add-book-input" type="text" name="category" id="category">
+                    <label class="add-book-label" for="image">Image</label>
+                    <input class="add-book-input" type="text" id="file" name="image">
+        <button class="add-book-button">Add</button>
 
                 </div>
 
-                <button class="add-button">Add</button>
+                    <div>
+
+                    </div>
 
             </form>
-            <div id="loadimage">
 
-            </div>
         </div>
-    </div>
+
     <script src="js/addbook.js">
         
 
