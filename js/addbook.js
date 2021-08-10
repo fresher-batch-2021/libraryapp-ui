@@ -8,7 +8,7 @@ function addbook(event) {
     const image = document.querySelector('#file').value;
     console.log(image);
 
-    if (bookName == "" || bookName == "") {
+    if (bookName == "" || bookName == null) {
         alert("Enter the BookName");
         return false
     }
