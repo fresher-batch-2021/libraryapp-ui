@@ -25,7 +25,7 @@ function register(event) {
     console.log(Obj)
     const url = "http://localhost:8000/users/addUser";
     axios.post(url, Obj).then(res => {
-        alert("Successfully registered");
+        alert(res.data.message);
     }).catch(err => {
         alert("Unable to register");
     })

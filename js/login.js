@@ -1,4 +1,4 @@
-function login(event) {
+function login() {
     event.preventDefault();
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
@@ -19,7 +19,7 @@ function login(event) {
         console.log(res.data)
         let user=res.data.userData
         localStorage.setItem('user',JSON.stringify(user));
-        if(res.data.message==="login successfull"){
+        if(res.data.message==="login successful"){
             window.location.href="initialpage.html"
         }
         alert(res.data.message)})

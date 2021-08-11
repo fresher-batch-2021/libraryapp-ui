@@ -15,7 +15,7 @@ function allBooks() {
 
     <h1 class="initial-page-h1">${bookObj.bookName} </h1>
     <h4 class="initial-page-h4">${bookObj.authorName}</h4>
-    <a href="orderbook.html">
+    <a href="orderbook.html?id=${bookObj._id}">
     <img class='initial-page-img' src="./images/${bookObj.image}" alt="image not found"/>
 </a> 
 </div>

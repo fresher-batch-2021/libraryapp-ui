@@ -47,29 +47,25 @@
 </head>
 
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="js/orderedbooks.js"></script>
     <table>
         <caption> Ordered Books</caption>
+        <thead>
+
         <tr>
             <th scope="col">S.No</th>
             <th scope="col">Books</th>
             <th scope="col">OrderedDate</th>
-            <th scope="col">ReturnDate</th>
+            <th scope="col">DueDate</th>
+            <th scope="col">Fine</th>
 
         </tr>
-        <tr>
-            <td>1</td>
-            <td>War and Peace</td>
-            <td>2021/04/10</td>
-            <td>2021/05/10</td>
-
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Song of Solomon</td>
-            <td>2021/05/01</td>
-            <td>2021/07/10</td>
-
-        </tr>
+    </thead>
+    <tbody id="orderedBooks"></tbody>
     </table>
 </body>
 
