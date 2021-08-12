@@ -42,6 +42,8 @@ function orderBook(id){
         "bookId":bookId        
     }
     const url="http://localhost:8000/order/place-orders"
-    axios.post(url,Obj).then(res=>alert("Ordered Successfully")).catch(err=>{alert("Can't able to order book")})
+    axios.post(url,Obj)
+    .then(res=>{alert("Ordered Successfully"),window.location.href="initialpage.html"} )
+    .catch(err=>{alert("Can't able to order book")})
     
 }
