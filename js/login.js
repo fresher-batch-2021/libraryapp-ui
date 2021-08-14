@@ -1,4 +1,4 @@
-function login(event) {
+function login() {
     event.preventDefault();
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;

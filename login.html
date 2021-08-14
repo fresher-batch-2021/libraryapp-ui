@@ -23,23 +23,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <div class="login-container">
+    <div class="login-container">
 
         <form onsubmit="login()" class="login-form">
             <h1 class="login-h1">Login</h1>
-            <label for="email" class="login-label" >Email</label>
-            <input class="login-input" type="email" name="email" id="email" placeholder="Enter Email" required><br>
-            <label for="password"class="login-label" >Password</label>
-            <input class="login-input" type="password" name="password" id="password" placeholder="Enter Password"
+            <label for="email" class="login-label">Email</label>
+            <input class="login-input" type="email" name="email" id="email" placeholder="Enter Email" autocomplete="off"
                 required><br>
+            <label for="password" class="login-label">Password</label>
+            <input class="login-input" type="password" name="password" id="password" autocomplete="off"
+                placeholder="Enter Password" required><br>
             <button class="login-button">Login</button>
-</div>
-
-
+    </div>
 
     </form>
     <script src="js/login.js">
-       
+
 
     </script>
 </body>

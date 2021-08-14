@@ -41,6 +41,7 @@ body{
         color:black;
         margin-left:50px;
         text-decoration: none;
+        cursor: pointer;
 
     }
     .nav-items:hover{

@@ -3,9 +3,16 @@
     <nav class='navbar'>
                     <a class='nav-item'href="initialpage.html">Home</a>
                     <a class='nav-items' href="ordered.html">Ordered Books</a>
+                     <a class='nav-items'  onclick="logout()"> 
+                        logout
+                     </a>
 
             </div>
-            
     </nav>
-    
+    <script>
+        function logout(){
+            localStorage.removeItem("user");
+            window.location.href="login.html"
+        }
+    </script>
 </header>

@@ -9,9 +9,7 @@ function loadBook(id) {
     <h1 class="order-h1">${book.bookName}</h1>
     <h3 class="order-h4">${book.authorName}</h3>
     <hr>
-    <p class="order-p"> War and Peace broadly focuses on Napoleon's invasion of Russia in 1812 and follows three
-        of the most well-known characters in literature: Pierre Bezukhov, the illegitimate son of a count who is
-        fighting for his inheritance and yearning for spiritual fulfillment</p>
+    <p class="order-p">${book.description} </p>
 
     <div>
         <button type="button" class="placeorder-button" onclick="orderBook('${book._id}')">PlaceOrder</button><br>
