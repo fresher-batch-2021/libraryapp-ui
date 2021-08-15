@@ -3,7 +3,7 @@ function orderedBooks(){
     const user=JSON.parse(userStr);
     const userId=user.user_id
     console.log(userId)
-    const url=("http://localhost:8000/order/order-details/"+userId)
+    const url=(" https://libraryapp-node-api.herokuapp.com/order/order-details/"+userId)
     axios.get(url).then(res=>{
         let orderDetails=res.data;
         let content=""

@@ -23,7 +23,7 @@ function register() {
         "password": password
     }
     console.log(Obj)
-    const url = "http://localhost:8000/users/addUser";
+    const url = " https://libraryapp-node-api.herokuapp.com/users/addUser";
     axios.post(url, Obj).then(res => {
         alert(res.data.message);
     }).catch(err => {

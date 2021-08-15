@@ -2,7 +2,7 @@ function allBooks() {
     const userStr=localStorage.getItem("user");
     const user=JSON.parse(userStr);
     console.log(user)
-    const url = ('http://localhost:8000/book/get-all-books?status=Active');
+    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-all-books?status=Active');
     axios.post(url).then(res => {
         console.log(res.data)
 
