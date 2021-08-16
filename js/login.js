@@ -24,6 +24,7 @@ function login() {
         }
         alert(res.data.message)})
         .catch(err => {
+            console.log(err.res.data);
         alert(res.data.message);
     })
 }

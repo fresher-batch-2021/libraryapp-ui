@@ -24,6 +24,8 @@ function allBooks() {
 
         document.querySelector('#books').innerHTML = allBook;
 
+    }).catch(err=>{
+        console.log(err.res.data);
     })
 
 }

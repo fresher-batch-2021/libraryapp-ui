@@ -47,7 +47,9 @@ function addbook(event) {
     const url = ('http://localhost:8000/book/add-book');
     axios.post(url, details).then(res =>
         alert(res.data))
-        .catch(err => alert("invalid details"))
+        .catch(err => {
+            console.log(err.res.data);
+            alert("invalid details")})
     }
 
 }

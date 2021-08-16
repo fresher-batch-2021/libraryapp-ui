@@ -17,6 +17,8 @@ function books() {
         }
         console.log(allBook);
         document.querySelector("#book").innerHTML = allBook;
+    }).catch(err=>{
+        console.log(err.res.data);
     })
 }
 books();

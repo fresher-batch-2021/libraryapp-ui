@@ -12,6 +12,8 @@ function orderedBooks(){
             content=content+`<tr><td>${i++}</td><td>${bookObj.bookId.bookName}</td><td>${new Date(bookObj.orderDate).toJSON().substr(0,10)}</td><td></td><td>Rs:${bookObj.fine}</td></tr>`
         }
         document.querySelector("#orderedBooks").innerHTML=content;
+    }).catch(err=>{
+        console.log(err.res.data);
     })
 }
 orderedBooks()
