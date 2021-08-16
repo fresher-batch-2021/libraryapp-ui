@@ -1,6 +1,6 @@
 
 function loadBook(id) {
-    const url = ('https://libraryapp-node-api.herokuapp.com/order/get-book-by-id/' + id)
+    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-book-by-id/' + id)
     axios.get(url).then(res => {
         let book = res.data;
         let content = "";
