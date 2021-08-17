@@ -26,6 +26,6 @@ function returnBook(bid){
     const uid=user.user_id
     console.log(uid)
     const url=`https://libraryapp-node-api.herokuapp.com/order/return-book/${uid}/${bid}`
-    axios.patch(url).then(res=>console.log(res)).catch(err=>{console.log(err.response)})
+    axios.patch(url).then(res=>{alert(res.data)},window.location.href="initialpage.html").catch(err=>{console.log(err.response)})
 
 }
