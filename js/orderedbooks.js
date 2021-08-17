@@ -9,7 +9,7 @@ function orderedBooks(){
         let content=""
         let i =1;
         for(let bookObj  of orderDetails){                 
-            content=content+`<tr><td>${i++}</td><td>${bookObj.bookId.bookName}</td><td>${new Date(bookObj.orderDate).toJSON().substr(0,10)}</td><td></td><td>Rs:${bookObj.fine}</td></tr>`
+            content=content+`<tr><td>${i++}</td><td>${bookObj.bookId.bookName}</td><td>${new Date(bookObj.orderDate).toJSON().substr(0,10)}</td><td>${bookObj.dueDate}</td><td>Rs:${bookObj.fine}</td></tr>`
         }
         document.querySelector("#orderedBooks").innerHTML=content;
     }).catch(err=>{

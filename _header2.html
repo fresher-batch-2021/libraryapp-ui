@@ -1,18 +1,27 @@
-
 <header>
+    <link rel="stylesheet" href="styles.css">
     <nav class='navbar'>
-                    <a class='nav-item'href="initialpage.html">Home</a>
-                    <a class='nav-items' href="ordered.html">Ordered Books</a>
-                     <a class='nav-items'  onclick="logout()"> 
-                        logout
-                     </a>
+        <span id='username'></span>
+        <a class='nav-item' href="initialpage.html">Home</a>
+        <a class='nav-items' href="ordered.html">Ordered Books</a>
+        <a class='nav-items' onclick="logout()">
+            logout
+        </a>
 
-            </div>
+        </div>
     </nav>
     <script>
-        function logout(){
+        function loggedInUser() {
+            const userStr = localStorage.getItem("user");
+            const user = JSON.parse(userStr);
+            console.log(user)
+            userName = `<span>Welcome ${user.name}</span>`
+            document.querySelector('#username').innerHTML = userName
+        }
+        loggedInUser()
+        function logout() {
             localStorage.removeItem("user");
-            window.location.href="login.html"
+            window.location.href = "login.html"
         }
     </script>
 </header>

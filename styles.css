@@ -26,7 +26,7 @@ body{
 .nav-item{
     color:black;
     border:3px;
-    margin-left:57rem;
+    margin-left:40rem;
     text-decoration: none;
     padding:9px;
 
@@ -39,7 +39,7 @@ body{
     .nav-items{
         padding:8px;
         color:black;
-        margin-left:50px;
+        margin-left:10px;
         text-decoration: none;
         cursor: pointer;
 

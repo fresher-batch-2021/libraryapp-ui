@@ -43,7 +43,6 @@ function orderBook(id){
     axios.post(url,Obj)
     .then(res=>{alert("Ordered Successfully"),window.location.href="initialpage.html"} )
     .catch(err=>{
-        console.log(err.res.data);
         alert("Can't able to order book")})
     
 }
