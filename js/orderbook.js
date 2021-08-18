@@ -1,7 +1,7 @@
 
 function loadBook(id) {
-    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-book-by-id/' + id)
-    axios.get(url).then(res => {
+    UserService.loadBook(id).then(res => {
+        console.log(res.data)
         let book = res.data;
         let content = "";
         content = content + `<img src="./images/${book.image}" alt="img">
@@ -39,10 +39,10 @@ function orderBook(id){
         "userId":userId,
         "bookId":bookId        
     }
-    const url="https://libraryapp-node-api.herokuapp.com/order/place-orders/"
-    axios.post(url,Obj)
+    UserService.orderBook(Obj)
     .then(res=>{alert("Ordered Successfully"),window.location.href="initialpage.html"} )
     .catch(err=>{
+        console.error(err)
         alert("Can't able to order book")})
     
 }

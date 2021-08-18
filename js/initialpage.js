@@ -2,10 +2,8 @@ function allBooks() {
     const userStr=localStorage.getItem("user");
     const user=JSON.parse(userStr);
     console.log(user)
-    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-all-books?status=Active');
-    axios.post(url).then(res => {
+   UserService.allBooks().then(res => {
         console.log(res.data)
-
         let book = res.data;
         let allBook = "";
         for (let bookObj of book) {
@@ -25,7 +23,7 @@ function allBooks() {
         document.querySelector('#books').innerHTML = allBook;
 
     }).catch(err=>{
-        console.log(err.res.data);
+        console.error(err);
     })
 
 }

@@ -14,8 +14,7 @@ function login() {
         "email": email,
         "password": password
     }
-    const url = "https://libraryapp-node-api.herokuapp.com/users/login";
-    axios.post(url, Obj).then(res => {
+    UserService.login(Obj).then(res => {
         console.log(res.data)
         let user=res.data.userData
         localStorage.setItem('user',JSON.stringify(user));

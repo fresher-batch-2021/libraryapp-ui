@@ -23,8 +23,7 @@ function register() {
         "password": password
     }
     console.log(Obj)
-    const url = " https://libraryapp-node-api.herokuapp.com/users/addUser";
-    axios.post(url, Obj).then(res => {
+    UserService.register(Obj).then(res => {
         alert(res.data.message);
     }).catch(err => {
         console.log(err.res.data);
