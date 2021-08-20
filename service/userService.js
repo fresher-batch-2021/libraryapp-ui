@@ -25,7 +25,11 @@ return axios.post(url,data);
         return axios.get(url);
     }
     static returnBook(bid,uid){
-        const url=`http://localhost:8000/order/return-book/${uid}/${bid}`
+        const url=`https://libraryapp-node-api.herokuapp.com/order/return-book/${uid}/${bid}`
+        return axios.patch(url)
+    }
+    static renewBook(bid,uid){
+        const url=`https://libraryapp-node-api.herokuapp.com/order/renew-date/${uid}/${bid}`
         return axios.patch(url)
     }
 }
