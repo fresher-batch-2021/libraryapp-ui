@@ -32,4 +32,10 @@ return axios.post(url,data);
         const url=`https://libraryapp-node-api.herokuapp.com/order/renew-date/${uid}/${bid}`
         return axios.patch(url)
     }
+    static userDetails(){
+        const userStr = localStorage.getItem("user");
+        const user = JSON.parse(userStr);
+        const userId = user
+        return userId
+    }
 }

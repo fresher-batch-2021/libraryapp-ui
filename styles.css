@@ -23,31 +23,44 @@ body{
     background-color:#f1f1f1;
 
 }
-.nav-item{
+.nav-link{
     color:black;
     border:3px;
-    margin-left:40rem;
     text-decoration: none;
     padding:9px;
-
+    margin-left:2rem ;
+cursor: pointer;
     } 
-    .nav-item:hover{
+    .nav-link:hover{
         color:black;
         background-color:#f1f1f1;
-        border-radius: 0;
     }
-    .nav-items{
-        padding:8px;
-        color:black;
-        margin-left:10px;
+    .login-a{
         text-decoration: none;
-        cursor: pointer;
+        color:black;
+    border:3px;
+    margin-left:60rem;
+    padding:9px;
 
     }
-    .nav-items:hover{
+    .login-a:hover{
         color:black;
         background-color:#f1f1f1;
-        transition:0.5s;
+    }
+    .logout-a{
+        color:black;
+        border:3px;
+        text-decoration: none;
+        padding:9px;
+        margin-left:40em ;
+    cursor: pointer;
+    }
+    .logout-a:hover{
+        color:black;
+        background-color:#f1f1f1;
+    }
+    .header-ul{
+        display: flex;
     }
 
     /* registerpage */

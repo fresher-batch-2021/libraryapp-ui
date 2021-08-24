@@ -18,7 +18,7 @@ function loadBook(id) {
 </div>`;
         document.querySelector("#orderBook").innerHTML = content;
 
-    }).catch(err => {alert("Book Not Found") })
+    }).catch(err => { alert("Book Not Found") })
 
 
 }
@@ -29,20 +29,20 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id');
 loadBook(id);
 
-function orderBook(id){
-    const userStr=localStorage.getItem("user");
-    const user=JSON.parse(userStr);
-    const userId=user.user_id
-    const bookId=id
+function orderBook(id) {
+    let user = UserService.userDetails();
+    let userId = user.user_id
+    const bookId = id
     console.log(bookId)
-    let Obj={
-        "userId":userId,
-        "bookId":bookId        
+    let Obj = {
+        "userId": userId,
+        "bookId": bookId
     }
     UserService.orderBook(Obj)
-    .then(res=>{alert("Ordered Successfully"),window.location.href="initialpage.html"} )
-    .catch(err=>{
-        console.error(err)
-        alert("Can't able to order book")})
-    
+        .then(res => { alert("Ordered Successfully"), window.location.href = "initialpage.html" })
+        .catch(err => {
+            console.error(err)
+            alert("Already ordered 3 books")
+        })
+
 }

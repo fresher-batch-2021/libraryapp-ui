@@ -9,14 +9,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js" integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <input type="date" id='date'>
-    <script>
-        function date(){
-            let today =new Date().toJSON().substr(0,10)
-            let date=dayjs().add(1,'days')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/jquery.tmpl.js"></script>
+<table>
+    <thead>
+        <tbody id="table">
+
+        </tbody>
+    </thead>
+</table>
+<template id="template"> 
+    <tr><td>${bookName}</td></tr>
+</template>
+    <script>
+
+        function books(){
+            const url ='https://libraryapp-node-api.herokuapp.com/book/get-all-books?status=Active';
+            axios.post(url).then(res=>{console.log(res.data) 
+            let book =res.data;
+            $("#template").tmpl(book).appendTo("#table")
+            }).catch(err=>console.error({err:err.message}))
         }
-        date();
+        books();
     </script>
 </body>
 </html>

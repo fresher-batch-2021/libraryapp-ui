@@ -30,21 +30,24 @@
         <form class="register-form" onsubmit="register()">
 
             <label for="name">Name:</label>
-            <input class="register-input" type="text" name="name" id="name" placeholder="Name"autocomplete="off" autofocus>
+            <input class="register-input" type="text" name="name" id="name" placeholder="Name" autocomplete="off"
+                autofocus>
             <label for="email">Email</label>
 
-            <input class="register-input" type="email" name="email" id="email" placeholder="Email"autocomplete="off" required>
+            <input class="register-input" type="email" name="email" id="email" placeholder="Email" autocomplete="off"
+                required>
             <label for="password">Password</label>
 
-            <input class="register-input" type="password" name="password" id="password" autocomplete="off"placeholder="Password"
-                required><br>
+            <input class="register-input" type="password" name="password" id="password" autocomplete="off"
+                placeholder="Password" required><br>
             <button class="register-button" type="submit">REGISTER</button>
-                <a class="register-a" href="login.html">Already have an account?</a>
+            <a class="register-a" href="login.html">Already have an account?</a>
 
 
         </form>
     </div>
-<script src="service/userService.js"></script>
+    <script src='service/validator.js'></script>
+    <script src="service/userService.js"></script>
     <script src="js/register.js">
 
     </script>

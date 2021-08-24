@@ -1,8 +1,5 @@
 function allBooks() {
-    const userStr=localStorage.getItem("user");
-    const user=JSON.parse(userStr);
-    console.log(user)
-   UserService.allBooks().then(res => {
+    UserService.allBooks().then(res => {
         console.log(res.data)
         let book = res.data;
         let allBook = "";
@@ -22,7 +19,7 @@ function allBooks() {
 
         document.querySelector('#books').innerHTML = allBook;
 
-    }).catch(err=>{
+    }).catch(err => {
         console.error(err);
     })
 

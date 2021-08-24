@@ -4,30 +4,27 @@ function register() {
     const name = document.querySelector("#name").value;
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    if (name == "" || name == null) {
-        alert('Name Should Be Entered')
-        return false;
-    } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
-        alert('Invalid Email')
-        return false;
-    } else if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(password)) {
-        alert("Password Must have uppercase and specialcharacter")
-        return false;
-    } else {
-        window.location.href = "login.html"
-    }
 
-    let Obj = {
-        "name": name,
-        "email": email,
-        "password": password
-    }
-    console.log(Obj)
-    UserService.register(Obj).then(res => {
-        alert(res.data.message);
-    }).catch(err => {
-        console.log(err.res.data);
-        alert("Unable to register");
-    })
+    try {
+        Validation.user(name, "Enter The Name");
+        Validation.email(email, 'Enter The Correct Email');
+        Validation.password(password, "Password should have one uppercase special character and number")
+        let Obj = {
+            "name": name,
+            "email": email,
+            "password": password
+        }
+        console.log(Obj)
+        UserService.register(Obj).then(res => {
+            alert(res.data.message);
+            window.location.href = 'login.html'
+        }).catch(err => {
+            console.log(err.res.data);
+            alert("Unable to register");
+        })
+    } catch (error) {
+        console.error(error.message)
+        alert(error)
 
+    }
 }

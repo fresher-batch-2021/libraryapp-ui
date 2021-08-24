@@ -1,23 +1,30 @@
 function orderedBooks() {
-    const userStr = localStorage.getItem("user");
-    const user = JSON.parse(userStr);
-    const userId = user.user_id
-    console.log(userId)
-    UserService.orderDetails(userId).then(res => {
+     let user=UserService.userDetails();
+     console.log(user)
+    UserService.orderDetails(user.user_id).then(res => {
         console.log(res.data)
         let orderDetails = res.data;
         let content = ""
         let i = 1;
         for (let bookObj of orderDetails) {
             console.log(bookObj.bookId)
-            let returnedDate = bookObj.returnDate == null ? "":bookObj.returnDate;
-            if (bookObj.returnDate == null) {
+            let returnedDate = bookObj.returnDate != null ? new Date(bookObj.returnDate).toJSON().substr(0, 10) :"";
+            let orderedDate =  new Date(bookObj.orderDate).toJSON().substr(0, 10);
+            content = content + `<tr>
+            <td>${i++}</td><td>${bookObj.bookId.bookName}</td>
+            <td>${orderedDate}</td>
+            <td>${bookObj.dueDate}</td><td>${returnedDate}</td>
+            <td>Rs:${bookObj.fine}</td>
+            <td>`;
 
-                console.log("not returned")
-            } else {
-                console.log(bookObj.returnDate.substr(0, 10))
+            if(bookObj.returnDate == null){
+            content+=`<button class='return-button' onclick="returnBook('${bookObj.bookId._id}')"  >Return</button>&nbsp;`;
             }
-            content = content + `<tr><td>${i++}</td><td>${bookObj.bookId.bookName}</td><td>${new Date(bookObj.orderDate).toJSON().substr(0, 10)}</td><td>${bookObj.dueDate}</td><td>${returnedDate}</td><td>Rs:${bookObj.fine}</td><td><button class='return-button' onclick="returnBook('${bookObj.bookId._id}')"  >Return</button>&nbsp;<button class='return-button' onclick="renewBook('${bookObj.bookId._id}')">RenewBook</button></td></tr>`
+            if(bookObj.status !== 'renewed'){
+            content+=`<button class='return-button' onclick="renewBook('${bookObj.bookId._id}')">RenewBook</button>`
+            }
+
+            content+='</td></tr>';
         }
         document.querySelector("#orderedBooks").innerHTML = content;
     }).catch(err => {
@@ -27,21 +34,18 @@ function orderedBooks() {
 orderedBooks()
 
 function returnBook(bid) {
-    const userStr = localStorage.getItem("user");
-    const user = JSON.parse(userStr);
-    const uid = user.user_id
+    let user=UserService.userDetails();
+    let uid=user.user_id
     console.log(uid)
-    UserService.returnBook(bid, uid)
-    .then(res => { alert(res.data) }, window.location.href = "initialpage.html")
+    UserService.returnBook(bid,uid)
+    .then(res => { alert("Book Returned"),window.location.href='initialpage.html'})
     .catch(err => { console.log(err.response) })
 
 }
 function renewBook(bid){
-    const userStr = localStorage.getItem("user");
-    const user = JSON.parse(userStr);
-    const uid = user.user_id
-    console.log(uid)
+    let user=UserService.userDetails();
+    let uid=user.user_id
     UserService.renewBook(bid,uid)
-    .then(res=>{console.log(res.data),window.location.href="ordered.html"} )
+    .then(res=>{alert("Book Renewed"),window.location.href="ordered.html"} )
     .catch(err => { console.log(err.response) })
 }

@@ -1,11 +1,58 @@
-<header id ='header'>
+<header id='header'>
     <link rel="stylesheet" href="styles.css">
 
     <nav class='navbar'>
-            <a class='logo' href="index.html"> Library</a>
-                    <a class='nav-item'href="login.html">Login</a>
-                    <a class='nav-items' href="register.html">Register</a>
-            
+
+        <ul class='header-ul'>
+            <li class='nav-item' data-loggedin='false' type=none>
+                <a class='logo' data-loggedin='false' href="index.html"> Library</a>
+
+            </li>
+
+            <li class='nav-item' data-loggedin='false' type=none>
+                <a class='login-a' href="login.html">Login</a>
+            </li>
+            <li class='nav-item' data-loggedin='false' type=none>
+
+                <a class='nav-link' href="register.html">Register</a>
+            </li>
+
+            <li class='nav-item' data-loggedin="true" type=none>
+                <a class='nav-link' href="initialpage.html">Home</a>
+
+            </li>
+            <li class='nav-item' type=none>
+                <a class='nav-link' href="ordered.html">Ordered Books</a>
+
+            </li>
+            <li class='nav-item' type=none>
+
+                <a class='logout-a' onclick="logout()">Logout</a>
+
+            </li>
+
+        </ul>
+
     </nav>
-    
+    <script>
+
+        const userStr = localStorage.getItem("user");
+        const user = JSON.parse(userStr);
+        console.log("User", user);
+        if (user != null) {
+            //if user is logged in, 
+            $(".nav-item[data-loggedin='true']").show();
+            $(".nav-item[data-loggedin='false']").hide();
+
+        } else {
+            //if user yet to logged in, 
+            $(".nav-item[data-loggedin='false']").show();
+            $(".nav-item[data-loggedin='true']").hide();
+        }
+        function logout() {
+            localStorage.clear("user");
+            window.location.href = 'login.html'
+        }
+
+    </script>
 </header>
