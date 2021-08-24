@@ -62,6 +62,10 @@ cursor: pointer;
     .header-ul{
         display: flex;
     }
+    .profilename{
+        text-decoration: none;
+        color: black;
+    }
 
     /* registerpage */
     .register-card{
