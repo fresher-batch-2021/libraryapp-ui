@@ -39,7 +39,7 @@ function orderBook(id) {
         "bookId": bookId
     }
     UserService.orderBook(Obj)
-        .then(res => { alert("Ordered Successfully"), window.location.href = "initialpage.html" })
+        .then(res => { alert("Ordered Successfully"),window.location.href = "initialpage.html" })
         .catch(err => {
             console.error(err)
             alert("Already ordered 3 books")

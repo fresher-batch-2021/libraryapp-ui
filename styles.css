@@ -9,6 +9,7 @@ body{
     text-decoration: none;
     color:white;
 }
+
 .logo{
     margin-left:10px;
     padding: 8px;
@@ -29,7 +30,7 @@ body{
     text-decoration: none;
     padding:9px;
     margin-left:2rem ;
-cursor: pointer;
+    cursor: pointer;
     } 
     .nav-link:hover{
         color:black;
@@ -52,15 +53,18 @@ cursor: pointer;
         border:3px;
         text-decoration: none;
         padding:9px;
-        margin-left:40em ;
-    cursor: pointer;
+        margin-left:20rem ;
+        cursor: pointer;
     }
+    
+   
     .logout-a:hover{
         color:black;
         background-color:#f1f1f1;
     }
     .header-ul{
         display: flex;
+        list-style-type: none;
     }
     .profilename{
         text-decoration: none;

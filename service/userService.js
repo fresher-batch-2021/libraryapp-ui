@@ -35,7 +35,6 @@ return axios.post(url,data);
     static userDetails(){
         const userStr = localStorage.getItem("user");
         const user = JSON.parse(userStr);
-        const userId = user
-        return userId
+        return user
     }
 }
