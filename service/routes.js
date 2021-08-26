@@ -4,7 +4,9 @@ const routes=[
     {path:"register"},
     {path:'initialpage.html',roles:["user"]},
     {path:'ordered.html',roles:['user']},
-    {path:'orderbook.html',roles:['user']}
+    {path:'orderbook.html',roles:['user']},
+    {path:'request.html',roles:['user']},
+
 ];
 
 function checkAccess(pageName, role) {

@@ -53,10 +53,12 @@ body{
         border:3px;
         text-decoration: none;
         padding:9px;
-        margin-left:20rem ;
+        margin-left:30rem ;
         cursor: pointer;
     }
-    
+    .logout-a{
+        margin-left:300px;
+    }
    
     .logout-a:hover{
         color:black;
@@ -217,13 +219,6 @@ th {
     margin:50px;
 }
 
-.search-input {
-    width: 30%;
-    padding: 15px;
-    border-radius: 40px;
-    border: none;
-}
-
 caption {
     margin-bottom: 20px;
     font-size: 50px;
@@ -264,7 +259,40 @@ caption {
 .card:hover {
     transform: translateY(-20px)
 }
-
+.search-input {
+    width: 20%;
+    padding: 15px;
+    border-radius: 40px;
+    border: none;
+    margin: 0 0 13px 450px;
+}
+.search-input:focus{
+    outline: none !important;
+        border-color: #0b0e11;
+        box-shadow: 0 0 10px #0b0c0e;  
+}
+.search-button{
+    padding:10px;
+    margin:0 0 0 15px;
+    border-radius:5px ;
+    border: none;
+    cursor: pointer;
+}
+.search-button:hover{
+    color:white;
+    background-color:blue ;
+}
+.reset-button{
+    padding:10px;
+    margin:0 0 0 15px;
+    border-radius:5px ;
+    border: none;
+    cursor: pointer;
+}
+.reset-button:hover{
+    color:white;
+    background-color:blue ;
+}
 /* orderpage */
 .order-div1{
     display: flex;
@@ -344,4 +372,29 @@ caption {
     background-color: #cccccc;
     color:black;
     cursor: pointer;
+}
+/* requestpage */
+
+.request-input {
+    width: 20%;
+    padding: 15px;
+    border-radius: 40px;
+    border: none;
+    margin: 0 0 13px 450px;
+}
+.request-input:focus{
+    outline: none !important;
+        border-color: #0b0e11;
+        box-shadow: 0 0 10px #0b0c0e;  
+}
+.request-button{
+    padding:10px;
+    margin:0 0 0 15px;
+    border-radius:5px ;
+    border: none;
+    cursor: pointer;
+}
+.request-button:hover{
+    color:white;
+    background-color:blue ;
 }

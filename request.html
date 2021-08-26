@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraryApp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="header">
+
+    </header>
+    <script src="service/routes.js"></script>
+    <script src="service/userService.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#header").load("_header.html");
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/jquery.tmpl.js"></script>
+    <script src="js/request.js"></script>
+
+
+    <input type="text" class="request-input" id='bookName' autocomplete="off" placeholder="Enter the book Name">
+    <button class='request-button' onclick='addRequest()'>Add Request</button>
+    <table>
+        <caption>Requested Books</caption>
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col"> UserName</th>
+                <th scope="col">Book Name</th>
+            </tr>
+
+        </thead>
+        <tbody id='table'></tbody>
+    </table>
+    <template id="template">
+
+        <tr>
+            <td>1</td>
+            <td>${userId.name}</td>
+            <td>${bookName}</td>
+
+        </tr>
+    </template>
+</body>
+
+</html>

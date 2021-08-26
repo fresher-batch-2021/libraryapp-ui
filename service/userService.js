@@ -32,6 +32,14 @@ return axios.post(url,data);
         const url=`https://libraryapp-node-api.herokuapp.com/order/renew-date/${uid}/${bid}`
         return axios.patch(url)
     }
+    static addRequest(obj){
+        const url='http://localhost:8000/request/add-request'
+        return axios.post(url)
+    }
+    static getRequestedBooks(){
+    const url='http://localhost:8000/request/all-requests'
+return axios.get(url)
+    }
     static userDetails(){
         const userStr = localStorage.getItem("user");
         const user = JSON.parse(userStr);

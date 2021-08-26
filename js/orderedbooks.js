@@ -20,7 +20,7 @@ function orderedBooks() {
             if(bookObj.returnDate == null){
             content+=`<button class='return-button' onclick="returnBook('${bookObj.bookId._id}')"  >Return</button>&nbsp;`;
             }
-            if(bookObj.status !== 'renewed'){
+            if(bookObj.status !== 'renewed'&& bookObj.returnDate == null){
             content+=`<button class='return-button' onclick="renewBook('${bookObj.bookId._id}')">RenewBook</button>`
             }
 
