@@ -34,12 +34,16 @@ return axios.post(url,data);
     }
     static addRequest(obj){
         const url='http://localhost:8000/request/add-request'
-        return axios.post(url)
+        return axios.post(url,obj)
     }
     static getRequestedBooks(){
     const url='http://localhost:8000/request/all-requests'
 return axios.get(url)
     }
+    static updateBookCount(Obj){
+        const url=`http://localhost:8000/request/add-count`
+    return axios.post(url,Obj)
+        }
     static userDetails(){
         const userStr = localStorage.getItem("user");
         const user = JSON.parse(userStr);

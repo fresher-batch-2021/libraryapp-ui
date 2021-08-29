@@ -34,7 +34,8 @@ function search(){
         UserService.allBooks()
         .then(res=>{
             let books=res.data
-            let searchBook=books.filter(obj=>obj.bookName.toLowerCase().indexOf(bookName.toLowerCase()) != -1)
+            let searchBook=books.filter(obj=>obj.bookName==bookName||obj.authorName==bookName)
+            console.log(searchBook)
             let allBook = "";
             for (let bookObj of searchBook) {
                 allBook = allBook + `

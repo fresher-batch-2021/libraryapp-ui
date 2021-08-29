@@ -38,7 +38,7 @@ function returnBook(bid) {
     let uid=user.user_id
     console.log(uid)
     UserService.returnBook(bid,uid)
-    .then(res => { alert("Book Returned"),window.location.href='initialpage.html'})
+    .then(res => { alert("Book Returned");window.location.href='initialpage.html'})
     .catch(err => { console.log(err.response) })
 
 }
@@ -46,6 +46,6 @@ function renewBook(bid){
     let user=UserService.userDetails();
     let uid=user.user_id
     UserService.renewBook(bid,uid)
-    .then(res=>{alert("Book Renewed"),window.location.href="ordered.html"} )
+    .then(res=>{alert("Book Renewed");window.location.href="ordered.html"} )
     .catch(err => { console.log(err.response) })
 }
