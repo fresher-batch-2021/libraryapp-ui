@@ -16,8 +16,12 @@ function register() {
         }
         console.log(Obj)
         UserService.register(Obj).then(res => {
+            if(res.data.message==='Registered successful'){
             alert(res.data.message);
             window.location.href = 'login.html'
+            }else{
+                alert(res.data.message)
+            }
         }).catch(err => {
             console.log(err.res.data);
             alert("Unable to register");

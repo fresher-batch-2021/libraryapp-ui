@@ -11,7 +11,7 @@ function addRequest(){
             "bookName":bookName
         }
       UserService.addRequest(Obj)
-      .then(res=>{alert(res.data)})
+      .then(res=>{alert(res.data);window.location.href='request.html'})
       .catch(err=>console.error(err.message))
     }
 

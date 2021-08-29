@@ -56,9 +56,6 @@ body{
         margin-left:30rem ;
         cursor: pointer;
     }
-    .logout-a{
-        margin-left:300px;
-    }
    
     .logout-a:hover{
         color:black;
