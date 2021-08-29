@@ -33,15 +33,15 @@ return axios.post(url,data);
         return axios.patch(url)
     }
     static addRequest(obj){
-        const url='http://localhost:8000/request/add-request'
+        const url='https://libraryapp-node-api.herokuapp.com/request/add-request'
         return axios.post(url,obj)
     }
     static getRequestedBooks(){
-    const url='http://localhost:8000/request/all-requests'
+    const url='https://libraryapp-node-api.herokuapp.com/request/all-requests'
 return axios.get(url)
     }
     static updateBookCount(Obj){
-        const url=`http://localhost:8000/request/add-count`
+        const url=`https://libraryapp-node-api.herokuapp.com/request/add-count`
     return axios.post(url,Obj)
         }
     static userDetails(){

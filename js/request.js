@@ -11,7 +11,7 @@ function addRequest(){
             "bookName":bookName
         }
       UserService.addRequest(Obj)
-      .then(res=>{console.log(res.data),alert(res.data)})
+      .then(res=>{alert(res.data)})
       .catch(err=>console.error(err.message))
     }
 
@@ -31,11 +31,11 @@ function allRequestedBooks(){
             console.log(userName)
             let user_id=book.count.map(e=>e._id)
             console.log(user_id)
-            let user=book.count.length
-            console.log(user)
+            let userData=book.count.length
+            console.log(userData)
             let requestedDate =  new Date(book.requestedDate).toJSON().substr(0, 10);
-            content=content+`<tr><td>${i++}</td> <td>${book.bookName}</td> <td>${userName}</td> <td>${requestedDate}</td><td>${user}`;
-            if(user_id===user.user_id){
+            content=content+`<tr><td>${i++}</td> <td>${book.bookName}</td> <td>${userName}</td> <td>${requestedDate}</td><td>${userData}`;
+            if(user_id===userData.user_id){
                 content+=`<button class='add-request-button' onclick="updateRequest('${book._id}')" >Add</button>`;
             }
             content+='</td></tr>';
@@ -53,6 +53,6 @@ function updateRequest(_id){
         "_id":_id,
         "user_id":user.user_id
     }
-    UserService.updateBookCount(Obj).then(res=>{console.log(res.data);window.location.href='request.html'}).catch(err=>alert(err.message))
+    UserService.updateBookCount(Obj).then(res=>{alert("Added Your Request");window.location.href='request.html'}).catch(err=>alert(err.message))
 
 }
