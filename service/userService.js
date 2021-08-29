@@ -46,7 +46,7 @@ return axios.get(url)
         }
     static userDetails(){
         const userStr = localStorage.getItem("user");
-        const user = JSON.parse(userStr);
-        return user
+        return JSON.parse(userStr);
+    
     }
 }
