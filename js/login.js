@@ -14,10 +14,12 @@ function login() {
             let user = res.data.userData
             console.log(user)
             localStorage.setItem('user', JSON.stringify(user));
-            if (res.data.message=== "login successful") {
+            if (res.data.message=== "login successful" && res.data.userData.status==='verified') {
+                alert(res.data.message)
                 window.location.href = "initialpage.html"
+            }else{
+                alert('not verified')
             }
-            alert(res.data.message)
         }).catch(err => {
                 alert(res.data.message);
             })
