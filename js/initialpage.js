@@ -4,7 +4,6 @@ function allBooks() {
         let book = res.data;
         let allBook = "";
         for (let bookObj of book) {
-            console.log(bookObj.bookName);
             allBook = allBook + `
             <div class="card">
 
@@ -27,14 +26,14 @@ function allBooks() {
 allBooks()
 
 function search(){
-    const bookName = document.querySelector("#bookName").value;
-    if(bookName==null||bookName.trim()==''){
+    const name = document.querySelector("#bookName").value;
+    if(name==null||name.trim()==''){
         alert('Enter The Book Name')
     }else{
         UserService.allBooks()
         .then(res=>{
             let books=res.data
-            let searchBook=books.filter(obj=>obj.bookName==bookName||obj.authorName==bookName)
+            let searchBook=books.filter(obj=>obj.bookName==name||obj.authorName==name.toLowerCase().indexOf(name.toLowerCase()) != -1)
             console.log(searchBook)
             let allBook = "";
             for (let bookObj of searchBook) {

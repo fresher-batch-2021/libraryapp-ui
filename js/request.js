@@ -7,11 +7,11 @@ function addRequest(){
         alert('Enter the bookname')
     }else{
         let Obj={
-            "count":userId,
+            "requestedUsers":userId,
             "bookName":bookName
         }
       UserService.addRequest(Obj)
-      .then(res=>{alert(res.data);window.location.href='request.html'})
+      .then(res=>{console.log(res.data),alert(res.data)})
       .catch(err=>console.error(err.message))
     }
 
@@ -27,15 +27,14 @@ function allRequestedBooks(){
         let content='';
         for(let book of books){
             console.log(book)
-            let userName=book.count.map(e=>e.name)
-            console.log(userName)
-            let user_id=book.count.map(e=>e._id)
+            let userName=book.requestedUsers.map(e=>e.name)
+            let user_id=book.requestedUsers.map(e=>e._id).includes(user.user_id)
             console.log(user_id)
-            let userData=book.count.length
-            console.log(userData)
+            let count=book.requestedUsers.length
             let requestedDate =  new Date(book.requestedDate).toJSON().substr(0, 10);
-            content=content+`<tr><td>${i++}</td> <td>${book.bookName}</td> <td>${userName}</td> <td>${requestedDate}</td><td>${userData}`;
-            if(user_id===userData.user_id){
+            content=content+`<tr><td>${i++}</td> <td>${book.bookName}</td> <td>${userName}</td> <td>${requestedDate}</td><td>${count}`;
+            if(user_id===false){
+                console.log('hii')
                 content+=`<button class='add-request-button' onclick="updateRequest('${book._id}')" >Add</button>`;
             }
             content+='</td></tr>';
