@@ -9,7 +9,7 @@ return axios.post(url,data);
     }
     static allBooks(){
         const url ='https://libraryapp-node-api.herokuapp.com/book/get-all-books?status=Active';
-        return axios.post(url)
+        return axios.get(url)
     }
 
     static loadBook(id){

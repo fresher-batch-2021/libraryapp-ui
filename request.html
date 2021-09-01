@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LibraryApp</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-    <header id="header">
+  <body>
+    <header id="header"></header>
 
-    </header>
-    <script src="service/routes.js"></script>
-    <script src="service/userService.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
-        $("#header").load("_header.html");
-
+      $("#header").load("_header.html");
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/request.js"></script>
 
-
-    <input type="text" class="request-input" id='bookName' autocomplete="off" placeholder="Enter the book Name">
-    <button class='request-button' onclick='addRequest()'>Add Request</button>
+    <input
+      type="text"
+      class="request-input"
+      id="bookName"
+      autocomplete="off"
+      placeholder="Enter the book Name"
+    />
+    <button class="request-button" onclick="addRequest()">Add Request</button>
     <table>
-        <caption>Requested Books</caption>
-        <thead>
-            <tr>
-                <th scope="col">S.No</th>
-                <th scope="col">Book Name</th>
-                <th scope="col"> UserName</th>
-                <th scope="col">Requested Date</th>
-                <th scope="col">No of Requests</th>
-            </tr>
-
-        </thead>
-        <tbody id='requestedBooks'></tbody>
+      <caption>
+        Requested Books
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">UserName</th>
+          <th scope="col">Requested Date</th>
+          <th scope="col">No of Requests</th>
+        </tr>
+      </thead>
+      <tbody id="requestedBooks"></tbody>
     </table>
-  
-</body>
-
+    <script src="service/routes.js"></script>
+    <script src="service/userService.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="js/request.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  </body>
 </html>

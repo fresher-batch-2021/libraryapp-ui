@@ -1,10 +1,13 @@
 function allBooks() {
-    UserService.allBooks().then(res => {
-        console.log(res.data)
-        let book = res.data;
-        let allBook = "";
-        for (let bookObj of book) {
-            allBook = allBook + `
+  UserService.allBooks()
+    .then((res) => {
+      console.log(res.data);
+      let book = res.data;
+      let allBook = "";
+      for (let bookObj of book) {
+        allBook =
+          allBook +
+          `
             <div class="card">
 
     <h1 class="initial-page-h1">${bookObj.bookName} </h1>
@@ -13,31 +16,39 @@ function allBooks() {
     <img class='initial-page-img' src="./images/${bookObj.image}" alt="image not found"/>
 </a> 
 </div>
-`
-        }
+`;
+      }
 
-        document.querySelector('#books').innerHTML = allBook;
-
-    }).catch(err => {
-        console.error(err);
+      document.querySelector("#books").innerHTML = allBook;
     })
-
+    .catch((err) => {
+      console.error(err);
+    });
 }
-allBooks()
+allBooks();
 
-function search(){
-    const name = document.querySelector("#bookName").value;
-    if(name==null||name.trim()==''){
-        alert('Enter The Book Name')
-    }else{
-        UserService.allBooks()
-        .then(res=>{
-            let books=res.data
-            let searchBook=books.filter(obj=>obj.bookName==name||obj.authorName==name.toLowerCase().indexOf(name.toLowerCase()) != -1)
-            console.log(searchBook)
-            let allBook = "";
-            for (let bookObj of searchBook) {
-                allBook = allBook + `
+function search() {
+  const name = document.querySelector("#bookName").value;
+  if (name == null || name.trim() == "") {
+    alert("Enter The Book Name");
+  } else {
+    UserService.allBooks()
+      .then((res) => {
+        let books = res.data;
+        let searchText = name.toLowerCase();
+
+        let searchBook = books.filter(
+          (obj) =>
+            obj.bookName.toLowerCase().indexOf(searchText) != -1 ||
+            obj.authorName.toLowerCase().indexOf(searchText) != -1
+        );
+
+        console.log(searchBook);
+        let allBook = "";
+        for (let bookObj of searchBook) {
+          allBook =
+            allBook +
+            `
                 <div class="card">
     
         <h1 class="initial-page-h1">${bookObj.bookName} </h1>
@@ -46,12 +57,10 @@ function search(){
         <img class='initial-page-img' src="./images/${bookObj.image}" alt="image not found"/>
     </a> 
     </div>
-    `
-            }
-            document.querySelector('#books').innerHTML = allBook;
-    
-        })
-        .catch(err=>console.error(err.message))
-    }
-
+    `;
+        }
+        document.querySelector("#books").innerHTML = allBook;
+      })
+      .catch((err) => console.error(err.message));
+  }
 }

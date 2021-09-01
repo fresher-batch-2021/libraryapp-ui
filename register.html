@@ -1,56 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>LibraryApp</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-
-
-</head>
-
-<body>
-    <header id="header">
-
-    </header>
+  <body>
+    <header id="header"></header>
     <script src="js/jquery.min.js"></script>
     <script>
-        $("#header").load("_header.html");
-
+      $("#header").load("_header.html");
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <div class="register-container">
-        <h1 class="register-h1">Register</h1>
+      <h1 class="register-h1">Register</h1>
 
-        <form class="register-form" onsubmit="register()">
+      <form class="register-form" onsubmit="register()">
+        <label for="name">Name:</label>
+        <input
+          class="register-input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          autocomplete="off"
+          autofocus
+        />
+        <label for="email">Email</label>
 
-            <label for="name">Name:</label>
-            <input class="register-input" type="text" name="name" id="name" placeholder="Name" autocomplete="off"
-                autofocus>
-            <label for="email">Email</label>
+        <input
+          class="register-input"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          autocomplete="off"
+          required
+        />
+        <label for="password">Password</label>
 
-            <input class="register-input" type="email" name="email" id="email" placeholder="Email" autocomplete="off"
-                required>
-            <label for="password">Password</label>
-
-            <input class="register-input" type="password" name="password" id="password" autocomplete="off"
-                placeholder="Password" required><br>
-            <button class="register-button" type="submit">REGISTER</button>
-            <a class="register-a" href="login.html">Already have an account?</a>
-
-
-        </form>
+        <input
+          class="register-input"
+          type="password"
+          name="password"
+          id="password"
+          autocomplete="off"
+          placeholder="Password"
+          required
+        /><br />
+        <button class="register-button" type="submit">REGISTER</button>
+        <a class="register-a" href="login.html">Already have an account?</a>
+      </form>
     </div>
-    <script src='service/validator.js'></script>
+    <script src="service/validator.js"></script>
     <script src="service/userService.js"></script>
-    <script src="js/register.js">
-
-    </script>
-</body>
-
+    <script src="js/register.js"></script>
+  </body>
 </html>
