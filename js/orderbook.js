@@ -46,6 +46,9 @@ BookService.findBookById(id).then(res=> {
   OrderService.placeOrder(Obj)
     .then((res) => {
       toastr.success("Placed Your Order");
+      setTimeout(()=>{
+        window.location.href="initialpage.html"
+      },2000)
     })
     .catch((err) => {
       console.error(err);
