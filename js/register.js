@@ -27,7 +27,7 @@ function register() {
 
       })
       .catch((err) => {
-        alert("Unable to register");
+        toastr.error("Unable to register");
       });
   } catch (error) {
     console.error(error.message);
