@@ -19,7 +19,6 @@ function register() {
     console.log(Obj);
     UserServices.register(Obj)
       .then((res) => {
-        console.log(res)
         toastr.success("Registered Successfully");
         setTimeout(()=>{
           window.location.href='login.html'
