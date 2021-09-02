@@ -8,20 +8,27 @@ function login() {
     email: email,
     password: password,
   };
-  UserService.login(Obj)
+  UserServices.login(email,password)
     .then((res) => {
-      console.log(res.data);
-      let user = res.data.userData;
+    
+      console.log(res);
+      let user = res;
       console.log(user);
+      if(user){
       localStorage.setItem("user", JSON.stringify(user));
-      if (res.data.message === "login successful") {
-        toastr.success(res.data.message);
-        window.location.href = "initialpage.html";
+      
+      toastr.success("Login Success");
+        setTimeout( ()=>{ 
+          
+          window.location.href = "initialpage.html";
+      },2000);
+        
       } else {
-        toastr.error(res.data.message);
+        toastr.error("Invalid Login Credentials");
       }
     })
     .catch((err) => {
-      toastr.success(res.data.message);
+      console.log(err);
+      toastr.error("Invalid Login Credentials");
     });
 }

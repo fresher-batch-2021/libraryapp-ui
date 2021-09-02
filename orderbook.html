@@ -16,19 +16,22 @@
     <script>
       $("#header").load("_header.html");
     </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"
-      integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="service/userService.js"></script>
+  
+    <div class="order-div1" id="orderBook"></div>
+    <script src="couchdb/dao/env.js"></script>
+    <script src="couchdb/dao/book-dao.js"></script>
+    <script src="couchdb/service/bookService.js"></script>
+    <script src="couchdb/dao/order-dao.js"></script>
+    <script src="couchdb/service/orderService.js"></script>
+    <script src="couchdb/service/userService.js"></script>
+
     <script src="js/orderbook.js"></script>
 
     <script
@@ -41,6 +44,5 @@
       href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
     />
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <div class="order-div1" id="orderBook"></div>
   </body>
 </html>

@@ -22,22 +22,6 @@
     <script>
       $("#header").load("_header.html");
     </script>
-    <script src="service/routes.js"></script>
-
-    <script src="service/userService.js"></script>
-
-    <script src="js/orderedbooks.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
     <table>
       <caption>
         Ordered Books
@@ -55,5 +39,31 @@
       </thead>
       <tbody id="orderedBooks"></tbody>
     </table>
+    <script src="service/routes.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"
+    integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+    <script src="couchdb/service/userService.js"></script>
+    <script src="couchdb/dao/env.js"></script>
+    <script src="couchdb/dao/book-dao.js"></script>
+    <script src="couchdb/service/bookService.js"></script>
+    <script src="couchdb/dao/order-dao.js"></script>
+    <script src="couchdb/service/orderService.js"></script>
+    <script src="js/orderedbooks.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    
   </body>
 </html>

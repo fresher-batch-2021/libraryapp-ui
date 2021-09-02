@@ -1,8 +1,8 @@
 function loadBook(id) {
-  UserService.loadBook(id)
+  BookService.findBookById(id)
     .then((res) => {
-      console.log(res.data);
-      let book = res.data;
+      console.log(res);
+      let book = res;
       let content = "";
       content =
         content +
@@ -21,6 +21,7 @@ function loadBook(id) {
       document.querySelector("#orderBook").innerHTML = content;
     })
     .catch((err) => {
+      console.error(err.message)
       alert("Book Not Found");
     });
 }
@@ -32,22 +33,25 @@ const id = urlParams.get("id");
 loadBook(id);
 
 function orderBook(id) {
-  let user = UserService.userDetails();
-  let userId = user.user_id;
+  let user = UserServices.userDetails();
+  console.log(user)
   const bookId = id;
-
-  console.log(bookId);
+BookService.findBookById(id).then(res=> {
+  let bookData=res
+  console.log(bookData)
   let Obj = {
-    userId: userId,
-    bookId: bookId,
-  };
-  console.log(Obj);
-  UserService.orderBook(Obj)
+    user:{_id:user._id,name:user.name},
+    book:{_id:bookId,bookName:bookData.bookName}
+      };
+  OrderService.placeOrder(Obj)
     .then((res) => {
-      toastr.success(res.data.message);
+      toastr.success("Placed Your Order");
     })
     .catch((err) => {
       console.error(err);
-      toastr.error("Already ordered 3 books");
+      toastr.error("Cant Order the book");
     });
+}).catch(err=>toastr.error("Cant Order"))
+
+  
 }

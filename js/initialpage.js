@@ -1,8 +1,8 @@
 function allBooks() {
-  UserService.allBooks()
+  BookService.getBooks()
     .then((res) => {
-      console.log(res.data);
-      let book = res.data;
+      console.log(res);
+      let book = res;
       let allBook = "";
       for (let bookObj of book) {
         allBook =
@@ -32,9 +32,10 @@ function search() {
   if (name == null || name.trim() == "") {
     alert("Enter The Book Name");
   } else {
-    UserService.allBooks()
+    BookService.getBooks()
       .then((res) => {
-        let books = res.data;
+        console.log(res)
+        let books = res;
         let searchText = name.toLowerCase();
 
         let searchBook = books.filter(

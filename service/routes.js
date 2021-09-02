@@ -2,10 +2,10 @@ const routes = [
   { path: "index.html" },
   { path: "login" },
   { path: "register" },
-  { path: "initialpage.html", roles: ["user"] },
-  { path: "ordered.html", roles: ["user"] },
-  { path: "orderbook.html", roles: ["user"] },
-  { path: "request.html", roles: ["user"] },
+  { path: "initialpage.html", roles: ["USER"] },
+  { path: "ordered.html", roles: ["USER"] },
+  { path: "orderbook.html", roles: ["USER"] },
+  { path: "request.html", roles: ["USER"] },
 ];
 
 function checkAccess(pageName, role) {
@@ -26,8 +26,8 @@ function checkAccess(pageName, role) {
 
 (function () {
   let user = JSON.parse(localStorage.getItem("user"));
-
-  let role = user != null ? user.userRole : null;
+console.log(user)
+  let role = user != null ? user.role : null;
   console.log(user);
   console.log(role);
   let pathName = window.location.pathname.substr(1);

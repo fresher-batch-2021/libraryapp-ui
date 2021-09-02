@@ -1,38 +1,41 @@
 function orderedBooks() {
-  let user = UserService.userDetails();
-  console.log(user);
-  UserService.orderDetails(user.user_id)
+  let user = UserServices.userDetails();
+  OrderService.getAllOrders()
     .then((res) => {
-      console.log(res.data);
-      let orderDetails = res.data;
+      console.log(res.map(e=>e.user._id));
+      let orderedUserId=res.map(e=>e.user._id)
+      let userData=orderedUserId.includes(user._id)
+    console.log(userData)
+    if(userData===true){
+      console.log("hi")
+      let orderDetails = res;
       let content = "";
       let i = 1;
       for (let bookObj of orderDetails) {
-        console.log(bookObj.bookId);
-        let returnedDate =
-          bookObj.returnDate != null
-            ? new Date(bookObj.returnDate).toJSON().substr(0, 10)
-            : "";
+        console.log(bookObj);
+        let returnedDate =  bookObj.returnDate != null? new Date(bookObj.returnDate).toJSON().substr(0, 10): "";
         let orderedDate = new Date(bookObj.orderDate).toJSON().substr(0, 10);
         content =
           content +
           `<tr>
-            <td>${i++}</td><td>${bookObj.bookId.bookName}</td>
+            <td>${i++}</td><td>${bookObj.book.bookTitle}</td>
             <td>${orderedDate}</td>
             <td>${bookObj.dueDate}</td><td>${returnedDate}</td>
             <td>Rs:${bookObj.fine}</td>
             <td>`;
 
         if (bookObj.returnDate == null) {
-          content += `<button class='return-button' onclick="returnBook('${bookObj.bookId._id}')"  >Return</button>&nbsp;`;
+          content += `<button class='return-button' onclick="returnBook('${bookObj._id}')"  >Return</button>&nbsp;`;
         }
         if (bookObj.status !== "renewed" && bookObj.returnDate == null) {
-          content += `<button class='return-button' onclick="renewBook('${bookObj.bookId._id}')">RenewBook</button>`;
+          content += `<button class='return-button' onclick="renewBook('${bookObj._id}')">RenewBook</button>`;
         }
 
         content += "</td></tr>";
       }
       document.querySelector("#orderedBooks").innerHTML = content;
+    }
+      
     })
     .catch((err) => {
       console.error(err);
@@ -40,28 +43,19 @@ function orderedBooks() {
 }
 orderedBooks();
 
-function returnBook(bid) {
-  let user = UserService.userDetails();
-  let uid = user.user_id;
-  console.log(uid);
-  UserService.returnBook(bid, uid)
+function returnBook(obj) {
+  console.log(obj)
+  OrderService.returnDate(obj)
     .then((res) => {
+      console.log(res)
       toastr.success("Book Returned");
       window.location.href = "initialpage.html";
     })
     .catch((err) => {
-      toastr.error(err.response);
+      toastr.error("Error Occured");
     });
 }
-function renewBook(bid) {
-  let user = UserService.userDetails();
-  let uid = user.user_id;
-  UserService.renewBook(bid, uid)
-    .then((res) => {
-      toastr.success("Book Renewed");
-      window.location.href = "ordered.html";
-    })
-    .catch((err) => {
-      toastr.error(err.response);
-    });
+
+function renewBook(Obj) {
+OrderService.renewDate(Obj).then(res=>console.log(res)).catch((err)=>console.log(err.message))
 }

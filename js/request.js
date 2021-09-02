@@ -1,40 +1,42 @@
 function addRequest() {
-  let user = UserService.userDetails();
-  let userId = user.user_id;
+  let user = UserServices.userDetails();
+  console.log(user)
   const bookName = document.querySelector("#bookName").value;
-  console.log(userId);
   if (bookName == null || bookName.trim() == "") {
     toastr.error("Enter the bookname");
   } else {
     let Obj = {
-      requestedUsers: userId,
+      user:{_id:user._id,name:user.name},
+      totalRequests:[],
       bookName: bookName,
+      requestedDate:new Date()
     };
-    UserService.addRequest(Obj)
+    RequestService.addRequest(Obj)
       .then((res) => {
-        toastr.success(res.data);
+        toastr.success("added your request");
+      window.location.href = "request.html";
+
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => toastr.error(err.message));
   }
 }
 function allRequestedBooks() {
-  UserService.getRequestedBooks()
+  RequestService.findAllRequests()
     .then((res) => {
-      console.log(res.data);
-      let user = UserService.userDetails();
+      let user = UserServices.userDetails();
       console.log(user);
-      let books = res.data;
+      let books = res;
+      console.log(books)
       let i = 1;
       let content = "";
       for (let book of books) {
-        console.log(book);
-        let userName = book.requestedUsers.map((e) => e.name);
-        let user_id = book.requestedUsers
-          .map((e) => e._id)
-          .includes(user.user_id);
+        let userName = book.user.name;
+        console.log(userName)
+        let user_id = book.totalRequests.map((e) => e).includes(user._id);
         console.log(user_id);
-        let count = book.requestedUsers.length;
-        let requestedDate = new Date(book.requestedDate).toJSON().substr(0, 10);
+        let count = book.totalRequests.length;
+        let requestedDate = new Date(book.requestedDate).toJSON().substr(0,10)
+       
         content =
           content +
           `<tr><td>${i++}</td> <td>${
@@ -53,13 +55,13 @@ function allRequestedBooks() {
 allRequestedBooks();
 
 function updateRequest(_id) {
-  let user = UserService.userDetails();
+  let user = UserServices.userDetails();
   console.log(user);
   let Obj = {
     _id: _id,
-    user_id: user.user_id,
+    userid: user._id,
   };
-  UserService.updateBookCount(Obj)
+  RequestService.addNewRequest(Obj)
     .then((res) => {
       toastr.success("Added Your Request");
       window.location.href = "request.html";

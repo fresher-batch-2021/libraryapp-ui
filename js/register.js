@@ -17,17 +17,16 @@ function register() {
       password: password,
     };
     console.log(Obj);
-    UserService.register(Obj)
+    UserServices.register(Obj)
       .then((res) => {
-        if (res.data.message === "Registered successful") {
-          toastr.success(res.data.message);
-          window.location.href = "login.html";
-        } else {
-          toastr.error(res.data.message);
-        }
+        console.log(res)
+        toastr.success("Registered Successfully");
+        setTimeout(()=>{
+          window.location.href='login.html'
+        },2000)
+
       })
       .catch((err) => {
-        console.log(err.res.data);
         alert("Unable to register");
       });
   } catch (error) {
