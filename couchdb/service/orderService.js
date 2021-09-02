@@ -18,7 +18,8 @@ class OrderService {
             orderDate: dayjs(),
             dueDate: this.getDueDate(),
             returnDate: null,
-            status: 'ordered'
+            status: 'ordered',
+            fine:0
 
         }
         console.log(data);
