@@ -26,7 +26,7 @@ function allRequestedBooks() {
   RequestService.findAllRequests()
     .then((res) => {
       let user = UserServices.userDetails();
-      let books = res;
+      let books = res.data.rows.map(obj => obj.doc);
       let i = 1;
       let content = "";
       for (let book of books) {

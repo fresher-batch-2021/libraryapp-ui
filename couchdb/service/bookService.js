@@ -31,6 +31,6 @@ class BookService {
         return BookDao.findBook(this.collectionName, bookName)
     }
     static async findBookById(id){
-        return await BookDao.findOne(this.collectionName,id)
+        return BookDao.findOne(this.collectionName,id)
     }
 }

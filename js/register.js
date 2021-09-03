@@ -19,6 +19,7 @@ function register() {
     console.log(Obj);
     UserServices.register(Obj)
       .then((res) => {
+        console.log(res)
         toastr.success("Registered Successfully");
         setTimeout(()=>{
           window.location.href='login.html'
@@ -26,7 +27,7 @@ function register() {
 
       })
       .catch((err) => {
-        toastr.error("Unable to register");
+        toastr.error(err.message);
       });
   } catch (error) {
     console.error(error.message);

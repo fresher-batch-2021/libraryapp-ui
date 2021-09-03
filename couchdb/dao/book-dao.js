@@ -60,7 +60,7 @@ class BookDao {
         console.log(book)
         const url = baseUrl + '/' + dbName + '/' + id + '?rev=' + book._rev;
         console.log(url)
-        return await axios.delete(url, { headers: { 'Authorization': basicAuth } })
+        return  axios.delete(url, { headers: { 'Authorization': basicAuth } })
     
     }
     static async updateBook(dbName, inputData) {
@@ -81,6 +81,6 @@ class BookDao {
         console.log(url);
         console.log(JSON.stringify(updatedObj));
 
-        return await axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } });
+        return axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } });
     }
 }

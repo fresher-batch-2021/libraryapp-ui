@@ -5,8 +5,7 @@ class OrderService {
     static getDueDate() {
 
         const NO_OF_DAYS = 6;
-        let dueDate = dayjs().add(NO_OF_DAYS, 'days').format('YYYY-MM-DD');
-        return dueDate;
+        return dayjs().add(NO_OF_DAYS, 'days').format('YYYY-MM-DD');
     }
     static async placeOrder(Obj) {
         const userObj = { _id: Obj.user._id, name: Obj.user.name };

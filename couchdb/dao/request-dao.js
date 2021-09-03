@@ -24,8 +24,7 @@ class RequestDao {
     }
     static async findAll(dbName) {
         const url = baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-        const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } })
-       return data.rows.map(obj => obj.doc);
+        return await axios.get(url, { headers: { 'Authorization': basicAuth } })
         
 
     }

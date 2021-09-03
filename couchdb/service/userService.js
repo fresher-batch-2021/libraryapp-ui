@@ -14,6 +14,22 @@ class UserServices {
         return RestService.save(this.collectionName, userObj);
     }
 
+    static async register(userObj) {
+        const criteria = {
+            selector: {
+                email: userObj.email
+            },
+            fields: ["_id", "name", "email", "role"]
+        }
+        const results = await RestService.query(this.collectionName, criteria);
+        console.log(results.length)
+        if(results.length!=1){
+        return RestService.save(this.collectionName, userObj);
+        }
+        else{
+            throw new Error('Already existing user')
+        }
+    }
     static async login(email, password, role = "USER") {
         const criteria = {
             selector: {
