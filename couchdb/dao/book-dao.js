@@ -3,19 +3,22 @@ class BookDao {
 
 
     static async save(dbName, inputData) {
-        const url = baseUrl+'/' + dbName
+        const url = baseUrl + '/' + dbName
         console.log(url)
         console.log(inputData)
         const { result } = axios.post(url, inputData, { headers: { 'Authorization': basicAuth } })
         return result
     }
     static async findAll(dbName) {
-        const url = baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-        const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } })
-        const results= data.rows.map(obj => obj.doc);
-        console.table(results);
-        return results;
-        
+        const url = baseUrl + "/" + dbName + "/_find";
+        let selector = {
+            selector: {},
+            sort: ["bookName"]
+        }
+        const { data } = await axios.post(url, selector, { headers: { 'Authorization': basicAuth } })
+        console.log(data)
+        return data.docs
+
     }
     static async findOne(dbName, id) {
         const url = baseUrl + "/" + dbName + "/" + id;
@@ -28,18 +31,18 @@ class BookDao {
         }
 
     }
-    static async findBook(dbName,bookName) {
+    static async findBook(dbName, bookName) {
         const url = baseUrl + "/" + dbName + "/_find";
         console.log(url);
-        let criteria={
-            selector:{
-                bookName:bookName
-            }     
+        let criteria = {
+            selector: {
+                bookName: bookName
+            }
         }
         console.log(criteria)
         const { data } = await axios.post(url, criteria, { headers: { 'Authorization': basicAuth } });
-        let result=data.docs.length!=0
-        return result
+    return data.docs.length != 0
+        
     }
 
     static handleError(err) {
@@ -57,8 +60,8 @@ class BookDao {
         console.log(book)
         const url = baseUrl + '/' + dbName + '/' + id + '?rev=' + book._rev;
         console.log(url)
-        const { result } = await axios.delete(url, { headers: { 'Authorization': basicAuth } })
-        return result;
+        return await axios.delete(url, { headers: { 'Authorization': basicAuth } })
+    
     }
     static async updateBook(dbName, inputData) {
 
@@ -74,11 +77,10 @@ class BookDao {
         console.log(updatedObj);
 
         //3. Update 
-        const url = baseUrl + "/" + dbName + "/" + inputData._id+'?rev'+inputData._rev;
+        const url = baseUrl + "/" + dbName + "/" + inputData._id + '?rev' + inputData._rev;
         console.log(url);
         console.log(JSON.stringify(updatedObj));
 
-        const { data } = await axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } });
-        return data;
+        return await axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } });
     }
 }

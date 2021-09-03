@@ -24,7 +24,6 @@ class RequestService {
         
         data.totalRequests.push(email)
         console.log(data)
-        //return RequestDao.save(this.collectionName, data)
         return RequestDao.updateOne(this.collectionName , { _id: id, totalRequests : data.totalRequests});
     }
     static async addNewRequest(obj) {
@@ -33,7 +32,6 @@ class RequestService {
         
         data.totalRequests.push(obj.userid)
         console.log(data)
-        //return RequestDao.save(this.collectionName, data)
         return RequestDao.updateOne(this.collectionName , { _id: obj._id, totalRequests : data.totalRequests});
     }
     static async findrequest(id) {

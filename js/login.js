@@ -4,10 +4,6 @@ function login() {
   const password = document.querySelector("#password").value;
   Validation.user(email, "Enter The Email");
   Validation.user(password, "Enter The Password");
-  const Obj = {
-    email: email,
-    password: password,
-  };
   UserServices.login(email,password)
     .then((res) => {
     

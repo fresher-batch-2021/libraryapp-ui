@@ -42,21 +42,7 @@ class OrderDao {
         console.log(updatedObj);
 
         const url = baseUrl + '/' + dbName +'/'+ inputData._id+'?rev'+inputData._rev
-        const { data } = axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
-        return data
-    }
-
-    static async findByBookAndStatus(dbName, bookName) {
-        const url = baseUrl + "/" + dbName + "/_find";
-        console.log(url);
-        console.log(JSON.stringify(selector));
-
-        let selector = { 
-            bookName : bookName,
-            status : 'ordered'
-        }
-        const { data } = await axios.post(url, selector, { headers: { 'Authorization': basicAuth } });
-        return data.docs;
+      return axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
     }
 
     static async isBookTaken(dbName,book_id) {
@@ -70,8 +56,7 @@ class OrderDao {
         }
         console.log(criteria)
         const { data } = await axios.post(url, criteria, { headers: { 'Authorization': basicAuth } });
-        let result=data.docs.length!=0;
-        return result
+        return data.docs.length!=0;
     }
 
 }

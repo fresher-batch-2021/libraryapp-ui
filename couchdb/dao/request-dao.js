@@ -25,16 +25,14 @@ class RequestDao {
     static async findAll(dbName) {
         const url = baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
         const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } })
-        const results = data.rows.map(obj => obj.doc);
-        console.table(results);
-        return results;
+       return data.rows.map(obj => obj.doc);
+        
 
     }
 
     static async addCount(dbName, id) {
         const url = baseUrl + "/" + dbName + '/' + id;
-        const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } })
-        return data
+       return await axios.get(url, { headers: { 'Authorization': basicAuth } })
 
     }
     static async findOne(dbName, id) {
@@ -66,7 +64,6 @@ class RequestDao {
         console.log(updatedObj);
         console.log(updatedObj)
         const url = baseUrl + '/' + dbName + '/' + updatedObj._id ;
-        const { data } = axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
-        return data
+      return axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
     }
 }

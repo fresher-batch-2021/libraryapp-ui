@@ -28,12 +28,11 @@ console.log(book)
 
         }
         console.log(data);
-        return await OrderDao.save(this.collectionName, data)
+        return  OrderDao.save(this.collectionName, data)
     }
     static async getAllOrders() {
         return OrderDao.findAll(this.collectionName);
     }
-    //static async returnDate(orderId) {
     static async returnDate(obj) {
         const findOrder=await OrderDao.findOne(this.collectionName,obj)
         console.log(findOrder)
@@ -45,7 +44,7 @@ console.log(book)
         }
         let returnDate = dayjs();
         findOrder.returnDate=returnDate
-        return await OrderDao.updateOne(this.collectionName, findOrder)
+        return  OrderDao.updateOne(this.collectionName, findOrder)
     }
     static getDiff(dueDate) {
         return dayjs().diff(dueDate, 'days')
@@ -65,9 +64,8 @@ console.log(book)
             findOrder.status = 'renewed'
         } else {
             console.log("you cant renew")
-            //throw new Error("You cannot renew");
         }
-        return await OrderDao.updateOne(this.collectionName, findOrder)
+        return OrderDao.updateOne(this.collectionName, findOrder)
 
     }
     static async bookTaken(bookId){
