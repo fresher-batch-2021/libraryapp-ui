@@ -5,18 +5,24 @@ function allBooks() {
       let book = res;
       let allBook = "";
       for (let bookObj of book) {
-        allBook =
-          allBook +
-          `
-            <div class="card">
+        console.log(bookObj)
+if(bookObj.quantity===0){
+  console.log('out of stock')
+}else{
+ 
+  allBook =
+  allBook +
+  `
+    <div class="card">
 
-    <h1 class="initial-page-h1">${bookObj.bookName} </h1>
-    <h4 class="initial-page-h4">${bookObj.authorName}</h4>
-    <a href="orderbook.html?id=${bookObj._id}">
-    <img class='initial-page-img' src="./images/${bookObj.image}" alt="image not found"/>
+<h1 class="initial-page-h1">${bookObj.bookName} </h1>
+<h4 class="initial-page-h4">${bookObj.authorName}</h4>
+<a href="orderbook.html?id=${bookObj._id}">
+<img class='initial-page-img' src="./images/${bookObj.image}" alt="image not found"/>
 </a> 
 </div>
-`;
+`; 
+}
       }
 
       document.querySelector("#books").innerHTML = allBook;
@@ -47,6 +53,7 @@ function search() {
         console.log(searchBook);
         let allBook = "";
         for (let bookObj of searchBook) {
+          console.log(bookObj)
           allBook =
             allBook +
             `

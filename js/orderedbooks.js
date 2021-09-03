@@ -49,7 +49,9 @@ function returnBook(obj) {
     .then((res) => {
       console.log(res)
       toastr.success("Book Returned");
-      window.location.href = "initialpage.html";
+      setTimeout(()=>{
+        window.location.href = "initialpage.html";
+      },2000)
     })
     .catch((err) => {
       toastr.error("Error Occured");
@@ -57,5 +59,11 @@ function returnBook(obj) {
 }
 
 function renewBook(Obj) {
-OrderService.renewDate(Obj).then(res=>console.log(res)).catch((err)=>console.log(err.message))
+OrderService.renewDate(Obj)
+.then(res=>{toastr.success("Book Renewed");
+setTimeout(()=>{
+  window.location.href="ordered.html"
+},2000)
+}
+).catch((err)=>console.log(err.message))
 }

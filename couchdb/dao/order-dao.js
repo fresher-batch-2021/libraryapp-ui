@@ -64,7 +64,7 @@ class OrderDao {
         console.log(url);
         let criteria={
             selector:{
-                book:{_id:book_id},status:'renewed'
+                book:{_id:book_id},status:'ordered'
             }
             
         }

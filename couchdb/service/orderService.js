@@ -11,7 +11,12 @@ class OrderService {
     static async placeOrder(Obj) {
         const userObj = { _id: Obj.user._id, name: Obj.user.name };
         const bookObj = { _id: Obj.book._id, bookTitle: Obj.book.bookName };
-
+const book= await BookService.findBookById(Obj.book._id)
+if(book){
+    book.quantity=book.quantity-1;
+    BookService.update(book)
+}
+console.log(book)
         const data = {
             user: userObj,
             book: bookObj,
@@ -32,6 +37,12 @@ class OrderService {
     static async returnDate(obj) {
         const findOrder=await OrderDao.findOne(this.collectionName,obj)
         console.log(findOrder)
+        const book= await BookService.findBookById(findOrder.book._id)
+        console.log(book)
+        if(book){
+            book.quantity=book.quantity+1
+            BookService.update(book)
+        }
         let returnDate = dayjs();
         findOrder.returnDate=returnDate
         return await OrderDao.updateOne(this.collectionName, findOrder)

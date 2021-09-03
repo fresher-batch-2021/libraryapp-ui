@@ -1,6 +1,5 @@
 function addRequest() {
   let user = UserServices.userDetails();
-  console.log(user)
   const bookName = document.querySelector("#bookName").value;
   if (bookName == null || bookName.trim() == "") {
     toastr.error("Enter the bookname");
@@ -14,26 +13,26 @@ function addRequest() {
     RequestService.addRequest(Obj)
       .then((res) => {
         toastr.success("added your request");
-      window.location.href = "request.html";
+        setTimeout(()=>{
+          window.location.href = "request.html";
+
+        },2000)
 
       })
-      .catch((err) => toastr.error(err.message));
+      .catch((err) => toastr.warning(err.message));
   }
 }
 function allRequestedBooks() {
   RequestService.findAllRequests()
     .then((res) => {
       let user = UserServices.userDetails();
-      console.log(user);
       let books = res;
-      console.log(books)
       let i = 1;
       let content = "";
       for (let book of books) {
+        console.log(book)
         let userName = book.user.name;
-        console.log(userName)
         let user_id = book.totalRequests.map((e) => e).includes(user._id);
-        console.log(user_id);
         let count = book.totalRequests.length;
         let requestedDate = new Date(book.requestedDate).toJSON().substr(0,10)
        
@@ -42,8 +41,7 @@ function allRequestedBooks() {
           `<tr><td>${i++}</td> <td>${
             book.bookName
           }</td> <td>${userName}</td> <td>${requestedDate}</td><td>${count}`;
-        if (user_id === false) {
-          console.log("hii");
+        if (user_id === false && user._id!=book.user._id ) {
           content += `<button class='add-request-button' onclick="updateRequest('${book._id}')" >Add</button>`;
         }
         content += "</td></tr>";
@@ -64,7 +62,9 @@ function updateRequest(_id) {
   RequestService.addNewRequest(Obj)
     .then((res) => {
       toastr.success("Added Your Request");
-      window.location.href = "request.html";
+      setTimeout(()=>{
+        window.location.href = "request.html";
+      },2000)
     })
     .catch((err) => toastr.error(err.message));
 }
