@@ -48,18 +48,23 @@ function orderBook(id) {
     OrderService.getAllOrders()
       .then(res => {
         console.log(res);
-        const alreadyOrdereedIds = res.map(e => e.user._id)
+        console.log(bookData)
+        const book = res.map(e => e.book._id)
+        console.log(book)
+        const bookId = bookData._id.includes(book)
+        console.log(bookId)
+        const alreadyOrdereedId = res.map(e => e.user._id)
         console.log(user._id)
-        const userss = alreadyOrdereedIds.includes(user._id)
+        const userss = alreadyOrdereedId.includes(user._id)
         console.log(userss)
-        if (userss === true) {
+        if (userss === true && bookId === true) {
           toastr.warning('Already ordered')
         } else {
           OrderService.placeOrder(Obj)
             .then((res) => {
               toastr.success("Placed Your Order");
               setTimeout(() => {
-                window.location.href="initialpage.html"
+                window.location.href = "initialpage.html"
               }, 2000)
             })
             .catch((err) => {
