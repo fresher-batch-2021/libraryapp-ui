@@ -51,14 +51,15 @@ function orderBook(id) {
         console.log(bookData)
         const book = res.map(e => e.book._id)
         console.log(book)
-        const bookId = bookData._id.includes(book)
+        const bookId = book.includes(bookData._id)
         console.log(bookId)
         const alreadyOrdereedId = res.map(e => e.user._id)
         console.log(user._id)
         const userss = alreadyOrdereedId.includes(user._id)
         console.log(userss)
-        if (userss === true && bookId === true) {
+        if (userss === true&& bookId === true) {
           toastr.warning('Already ordered')
+          return false;
         } else {
           OrderService.placeOrder(Obj)
             .then((res) => {

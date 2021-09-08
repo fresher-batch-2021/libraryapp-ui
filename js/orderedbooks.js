@@ -33,6 +33,9 @@ function orderedBooks() {
 
         content += "</td></tr>";
       }
+      if(orderDetails.length==0){
+        content+=`<tr> No records found</tr>`
+      }
       document.querySelector("#orderedBooks").innerHTML = content;
     }
       
