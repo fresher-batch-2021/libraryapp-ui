@@ -9,7 +9,6 @@ class OrderDao {
         const url = baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
         console.log(url);
         const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } });
-        console.table(data.rows.map(obj => obj.doc))
         return data.rows.map(obj => obj.doc);
     }
     static async findOne(dbName,id) {
@@ -57,6 +56,14 @@ class OrderDao {
         console.log(criteria)
         const { data } = await axios.post(url, criteria, { headers: { 'Authorization': basicAuth } });
         return data.docs.length!=0;
+    }
+    static async query(dbName, selector) {
+        const url = baseUrl + "/" + dbName + "/_find";
+        console.log(url);
+        console.log(JSON.stringify(selector));
+
+        const { data } = await axios.post(url, selector, { headers: { 'Authorization': basicAuth } });
+        return data.docs;
     }
 
 }

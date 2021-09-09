@@ -15,6 +15,7 @@ function register() {
       name: name,
       email: email,
       password: password,
+      role:"USER"
     };
     console.log(Obj);
     UserServices.register(Obj)
@@ -22,7 +23,7 @@ function register() {
         console.log(res)
         toastr.success("Registered Successfully");
         setTimeout(()=>{
-          window.location.href='login.html'
+          // window.location.href='login.html'
         },2000)
 
       })

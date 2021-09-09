@@ -43,37 +43,13 @@ function orderBook(id) {
       user: { _id: user._id, name: user.name },
       book: { _id: bookId, bookName: bookData.bookName }
     };
-
-    console.log(Obj)
-    OrderService.getAllOrders()
-      .then(res => {
-        console.log(res);
-        console.log(bookData)
-        const book = res.map(e => e.book._id)
-        console.log(book)
-        const bookId = book.includes(bookData._id)
-        console.log(bookId)
-        const alreadyOrdereedId = res.map(e => e.user._id)
-        console.log(user._id)
-        const userss = alreadyOrdereedId.includes(user._id)
-        console.log(userss)
-        if (userss === true&& bookId === true) {
-          toastr.warning('Already ordered')
-          return false;
-        } else {
-          OrderService.placeOrder(Obj)
-            .then((res) => {
-              toastr.success("Placed Your Order");
-              setTimeout(() => {
-                window.location.href = "initialpage.html"
-              }, 2000)
-            })
-            .catch((err) => {
-              toastr.error("Cant Order the book");
-            });
-        }
-
-      }).catch(err => toastr.error('Book Does Not Exists'))
+    OrderService.placeOrder(Obj)
+    .then(res=>{toastr.success("Successfully Ordered");
+    setTimeout(()=>{
+      window.location.href="initialpage.html"
+    },2000)
+  })
+    .catch(err=>  toastr.warning(err.message))     
 
   }).catch(err => toastr.error("Book Does Not Exists"))
 
