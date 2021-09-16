@@ -48,7 +48,15 @@ class OrderService {
             BookService.update(book)
         }
         let returnDate = dayjs();
+        console.log(findOrder)
+        let returns=dayjs().diff(findOrder.dueDate, 'days')
+        console.log(returns)
+        if(returns>=1){
+            findOrder.fine=returns*10
+        }
         findOrder.returnDate = returnDate
+        console.log(returnDate)
+        console.log(findOrder)
         return OrderDao.updateOne(this.collectionName, findOrder)
     }
     static getDiff(dueDate) {

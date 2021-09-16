@@ -6,7 +6,7 @@ function loadBook(id) {
       let content = "";
       content =
         content +
-        `<img src="./images/${book.image}" alt="img">
+        `<img class="order-image" src="./images/${book.image}" alt="img">
 <div class="order-div2">
     <h1 class="order-h1">${book.bookName}</h1>
     <h3 class="order-h4">${book.authorName}</h3>
