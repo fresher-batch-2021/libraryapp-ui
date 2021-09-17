@@ -28,11 +28,13 @@ class RequestService {
     }
     static async addNewRequest(obj) {
         const data = await RequestDao.addCount(this.collectionName, obj._id)
-        console.log(data);
-        
-        data.totalRequests.push(obj.userid)
+        console.log(data.data);
+        console.log(obj)
+
+        data.data.totalRequests.push(obj.userid)
         console.log(data)
-        return RequestDao.updateOne(this.collectionName , { _id: obj._id, totalRequests : data.totalRequests});
+    
+        return RequestDao.updateOne(this.collectionName , { _id: obj._id, totalRequests : data.data.totalRequests});
     }
     static async findrequest(id) {
         const data = await RequestDao.findOne(this.collectionName, id)
