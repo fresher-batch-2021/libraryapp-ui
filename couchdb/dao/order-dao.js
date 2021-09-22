@@ -11,9 +11,8 @@ class OrderDao {
         const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } });
         return data.rows.map(obj => obj.doc);
     }
-    static async findOne(dbName,id) {
+    static async findOne(dbName, id) {
         const url = baseUrl + '/' + dbName + '/' + id;
-        console.log(url)
         try {
             const { data } = await axios.get(url, { headers: { 'Authorization': basicAuth } });
             return data;
@@ -40,22 +39,22 @@ class OrderDao {
         let updatedObj = Object.assign(order, inputData);
         console.log(updatedObj);
 
-        const url = baseUrl + '/' + dbName +'/'+ inputData._id+'?rev'+inputData._rev
-      return axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
+        const url = baseUrl + '/' + dbName + '/' + inputData._id + '?rev' + inputData._rev
+        return axios.put(url, updatedObj, { headers: { 'Authorization': basicAuth } })
     }
 
-    static async isBookTaken(dbName,book_id) {
+    static async isBookTaken(dbName, book_id) {
         const url = baseUrl + "/" + dbName + "/_find";
         console.log(url);
-        let criteria={
-            selector:{
-                book:{_id:book_id},status:'ordered'
+        let criteria = {
+            selector: {
+                book: { _id: book_id }, status: 'ordered'
             }
-            
+
         }
         console.log(criteria)
         const { data } = await axios.post(url, criteria, { headers: { 'Authorization': basicAuth } });
-        return data.docs.length!=0;
+        return data.docs.length != 0;
     }
     static async query(dbName, selector) {
         const url = baseUrl + "/" + dbName + "/_find";

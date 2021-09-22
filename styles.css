@@ -223,7 +223,7 @@ caption {
 
 .row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .initial-page-img {
@@ -232,7 +232,7 @@ caption {
 
 .card {
   width: 90%;
-  margin: 15px 0 15px;
+  margin: 15px 0 15px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   background-color: #f1f1f1;

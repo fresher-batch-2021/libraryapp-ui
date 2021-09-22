@@ -51,9 +51,14 @@ function returnBook(obj) {
   OrderService.returnDate(obj)
     .then((res) => {
       console.log(res)
-      toastr.success("Book Returned");
+      if(res===false){
+        toastr.success("Pay the fine");
+      }else{
+        toastr.success("Book Returned");
+
+      }
       setTimeout(()=>{
-        window.location.href = "initialpage.html";
+        // window.location.href = "initialpage.html";
       },2000)
     })
     .catch((err) => {

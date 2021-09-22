@@ -12,11 +12,11 @@ class OrderService {
         const bookObj = { _id: Obj.book._id, bookTitle: Obj.book.bookName };
         const book = await BookService.findBookById(Obj.book._id)
         console.log(book)
-        const orderDetails=await OrderService.findOrder(Obj)
+        const orderDetails = await OrderService.findOrder(Obj)
         console.log(orderDetails)
-        if (orderDetails==1) {
+        if (orderDetails == 1) {
             throw new Error("Already ordered")
-        }else if(book){
+        } else if (book) {
             book.quantity = book.quantity - 1;
             BookService.update(book)
         }
@@ -33,7 +33,7 @@ class OrderService {
         }
         console.log(data);
         return OrderDao.save(this.collectionName, data)
-        
+
     }
     static async getAllOrders() {
         return OrderDao.findAll(this.collectionName);
@@ -49,15 +49,21 @@ class OrderService {
         }
         let returnDate = dayjs();
         console.log(findOrder)
-        let returns=dayjs().diff(findOrder.dueDate, 'days')
+        let returns = dayjs().diff(findOrder.dueDate, 'days')
         console.log(returns)
-        if(returns>=1){
-            findOrder.fine=returns*10
+        if (returns >= 1) {
+            findOrder.fine = returns * 10
         }
-        findOrder.returnDate = returnDate
-        console.log(returnDate)
-        console.log(findOrder)
-        return OrderDao.updateOne(this.collectionName, findOrder)
+        if (findOrder.fine > 0) {
+            alert('pay the fine')
+            return false
+        } else {
+            findOrder.returnDate = returnDate
+            console.log(returnDate)
+            console.log(findOrder)
+            findOrder.status = "returned"
+            return OrderDao.updateOne(this.collectionName, findOrder)
+        }
     }
     static getDiff(dueDate) {
         return dayjs().diff(dueDate, 'days')
@@ -90,8 +96,9 @@ class OrderService {
         console.log(orderObj)
         const criteria = {
             selector: {
-                book:{_id:orderObj.book._id},
-                user:{_id:orderObj.user._id}
+                book: { _id: orderObj.book._id },
+                user: { _id: orderObj.user._id },
+                status: "ordered"
             },
         }
         const results = await OrderDao.query(this.collectionName, criteria);
